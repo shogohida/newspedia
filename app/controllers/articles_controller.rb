@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
     # API key to env file
 
-    # select_webstie
+    # select_website
   end
 
   def show

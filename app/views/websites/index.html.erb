@@ -1,0 +1,11 @@
+<h1>Test</h1>
+
+<%= simple_form_for @website do |f| %>
+  <%= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
+<% end %>
+
+
+
+<%# @websites.each do |website| %>
+  <%#= website.name %>
+<%# end %>

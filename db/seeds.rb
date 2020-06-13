@@ -14,6 +14,30 @@ puts 'Creating users...'
   password: '123456'
 )
 
+puts "Deleting websites..."
+Website.destroy_all
+
+puts "Creating websites..."
+Website.create!(
+  name: "The New York Times",
+  url: "https://www.nytimes.com/"
+)
+
+Website.create!(
+  name: "Financial Times",
+  url: "https://www.ft.com/"
+)
+
+Website.create!(
+  name: "News API",
+  url: "https://newsapi.org/"
+)
+
+Website.create!(
+  name: "Wikipedia",
+  url: "https://www.wikipedia.org/"
+)
+
 # puts 'Creating articles...'
 # Article.create!(
 #   name: 'test',
