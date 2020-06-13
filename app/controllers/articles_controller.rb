@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
     # 長くなるのでサービスを作る
     # choose a type of articles you want to read (1 keyword, 2 date, 3 language)
     # url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{keyword}&api-key=KWwSqakiTpXxhKaIS8211GJYbEeKgWCZ"
+
+    # API key to env file
+
+    # select_webstie
   end
 
   def show
