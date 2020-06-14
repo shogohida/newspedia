@@ -16,6 +16,10 @@ class WebsitesController < ApplicationController
       url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=KWwSqakiTpXxhKaIS8211GJYbEeKgWCZ"
       ny_serialized = open(url1).read
       @keyword_articles = JSON.parse(ny_serialized)
+      @array = []
+      @keyword_articles["response"]["docs"].each do |article|
+        @array << article["lead_paragraph"]
+      end
       # articleへのリンクを作らないといいねとかブックマークできない
     elsif @website.name == "Financial Times"
       @website.datetime = DateTime.now

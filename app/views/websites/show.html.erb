@@ -10,10 +10,13 @@
     <%= f.submit %>
   <% end %>
   <ol>
-  <% @keyword_articles["response"]["docs"].each do |article| %>
-    <li><%= article["lead_paragraph"] %></li>
+  <%# @keyword_articles["response"]["docs"].each do |article| %>
+    <!-- <li><%#= article["lead_paragraph"] %></li> -->
+  <% @array.each do |article| %>
+    <li><%= article %></li>
     <!-- articleへのリンクを作らないといいねとかブックマークできない -->
-<!--     link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
+    <%= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
+    <!-- link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
   <% end %>
   </ol>
 <% elsif @website.name == "Financial Times" %>
@@ -38,6 +41,7 @@
 <% elsif @website.name == "News API" %>
   <%#= simple_form_for @website do |f| %>
     <%#= f.input :country %>
+    <!-- select as: : ["Japan, "US",...] -->
     <%#= f.submit %>
   <%# end %>
   <ul>

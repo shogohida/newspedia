@@ -21,10 +21,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user_id = current_user.id
+    @website = Website.find(params[:website_id])
+    @article = Article.new(content: @array)
+    # @article.user_id = current_user.id
     @article.save
     # データベースに保存するため
+    raise
   end
 
   def update
