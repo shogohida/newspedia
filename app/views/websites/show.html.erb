@@ -9,16 +9,22 @@
     <%= f.input :keyword %>
     <%= f.submit %>
   <% end %>
-  <ol>
+
+  <h2>The New York Times is a traditional new paper from US. It has been providing its service since 1851....</h2>
+  <%#= simple_form_for do |f| %>
+
+  <%# end %>
+
+  <!-- <ol> -->
   <%# @keyword_articles["response"]["docs"].each do |article| %>
     <!-- <li><%#= article["lead_paragraph"] %></li> -->
-  <% @array.each do |article| %>
-    <li><%= article %></li>
+  <%# @array.each do |article| %>
+    <!-- <li><%#= article %></li> -->
     <!-- articleへのリンクを作らないといいねとかブックマークできない -->
-    <%= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
+    <%#= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
     <!-- link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
-  <% end %>
-  </ol>
+  <%# end %>
+  <!-- </ol> -->
 <% elsif @website.name == "Financial Times" %>
   <%= simple_form_for @website do |f| %>
     <%= f.input :datetime %>

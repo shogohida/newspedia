@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   # root to: "websites#index" ??
 
   resources :websites, only: [:index, :show, :update] do
-    resources :articles, only: :create
+    resources :articles, only: [:index, :create]
     # nest with article show?
+    # no article create?
   end
 
+  # no article actions?
   resources :articles, only: [:index, :show, :create, :update] do
     resources :likes, only: [:create, :destroy]
   end

@@ -1,6 +1,12 @@
+require 'json'
+require 'open-uri'
+require 'wikipedia'
+require 'news-api'
+
 class ArticlesController < ApplicationController
   def index
-    # @articles = Article.all
+    # このやり方だとインデックス行くたびに作られるけどいいのか
+    @website = Website.find(params[:website_id])
     # 上のやついらないのか
     # if website.name == "nytimes"....
     # ホームページで媒体の選択とキーワードもしくは日時等（媒体に合わせて）入力させる
@@ -12,6 +18,25 @@ class ArticlesController < ApplicationController
     # API key to env file
 
     # select_website
+
+    if @website.name == "The New York Times"
+      url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=KWwSqakiTpXxhKaIS8211GJYbEeKgWCZ"
+      ny_serialized = open(url1).read
+      @keyword_articles = JSON.parse(ny_serialized)
+      # @array = []
+      @keyword_articles["response"]["docs"].each do |article|
+        # @array << article["lead_paragraph"]
+        @article = Article.new(
+          website: @website,
+          content: article["lead_paragraph"]
+        )
+        if @article.valid?
+          @article.save
+        end
+      end
+
+    end
+    @articles = Article.all
   end
 
   def show
@@ -23,10 +48,11 @@ class ArticlesController < ApplicationController
   def create
     @website = Website.find(params[:website_id])
     @article = Article.new(content: @array)
+    @article.website = @website
     # @article.user_id = current_user.id
     @article.save
     # データベースに保存するため
-    raise
+    # raise
   end
 
   def update

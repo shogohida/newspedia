@@ -14,6 +14,9 @@ puts 'Creating users...'
   password: '123456'
 )
 
+puts "Deleting articles..."
+Article.destroy_all
+
 puts "Deleting websites..."
 Website.destroy_all
 
@@ -37,6 +40,7 @@ Website.create!(
   name: "Wikipedia",
   url: "https://www.wikipedia.org/"
 )
+
 
 # 自動的にシードやる設定にしないとアーティクルがdbに保存されない
 # news apiはやりやすいかも
