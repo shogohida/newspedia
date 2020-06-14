@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   # get 'websites/index'
   # get 'websites/show'
   # get 'articles/index'
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # root to: "websites#index" ??
+
+  resources :users, only: :show
 
   resources :websites, only: [:index, :show, :update] do
     resources :articles, only: [:index, :show, :create]

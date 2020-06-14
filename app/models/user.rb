@@ -5,8 +5,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
   has_many :favorites
   has_many :likes
-  has_many :favorite_articles, through: :favorites, source: :article
-  has_many :like_articles, through: :likes, source: :article
+  has_many :favorited_articles, through: :favorites, source: :article
+  has_many :liked_articles, through: :likes, source: :article
   def already_liked?(article)
     self.likes.exists?(article_id: article.id)
   end
