@@ -30,12 +30,12 @@
     <%= f.input :datetime %>
     <%= f.submit %>
   <% end %>
-  <ol>
-  <% @recent_articles["notifications"].each do |article| %>
-    <li><%= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
-  <!-- link_to article.title, path above..... -->
-  <% end %>
-  </ol>
+<!--   <ol>
+  <%# @recent_articles["notifications"].each do |article| %>
+    <li><%#= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
+  < link_to article.title, path above..... -->
+  <%# end %>
+  <!-- </ol> -->
 <% elsif @website.name == "Wikipedia" %>
   <%= simple_form_for @website do |f| %>
     <%= f.input :keyword %>
@@ -45,17 +45,17 @@
     <%= @page.summary %>
   <% end %>
 <% elsif @website.name == "News API" %>
-  <%#= simple_form_for @website do |f| %>
-    <%#= f.input :country %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :country %>
     <!-- select as: : ["Japan, "US",...] -->
-    <%#= f.submit %>
-  <%# end %>
-  <ul>
-    <%= @country_articles.each do |article| %>
-      <li><%= article["title"] %></li>
-      <li><%= article["description"] %></li>
-    <% end %>
-  </ul>
+    <%= f.submit %>
+  <% end %>
+<!--   <ul>
+    <%#= @country_articles.each do |article| %>
+      <li><%#= article["title"] %></li>
+      <li><%#= article["description"] %></li>
+    <%# end %>
+  </ul> -->
 <!--   <ul>
     <%# @top_headlines.each do |headline| %>
       <li><%#= headline.title %></li>
