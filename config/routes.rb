@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # root to: "websites#index" ??
 
-  resources :websites, only: [:index, :show]
+  resources :websites, only: [:index, :show, :update]
   # nest witn article show?
 
   resources :articles, only: [:index, :show, :create, :update] do
