@@ -14,4 +14,23 @@
     <li><%= article["lead_paragraph"] %></li>
   <% end %>
   </ol>
+<% elsif @website.name == "Financial Times" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :datetime %>
+    <%= f.submit %>
+  <% end %>
+  <ol>
+  <% @recent_articles["notifications"].each do |article| %>
+    <li><%= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
+  <!-- link_to article.title, path above..... -->
+  <% end %>
+  </ol>
+<% elsif @website.name == "Wikipedia" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :keyword %>
+    <%= f.submit %>
+  <% end %>
+  <% if @page != nil %>
+    <%= @page.summary %>
+  <% end %>
 <% end %>
