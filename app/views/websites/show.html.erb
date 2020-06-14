@@ -12,6 +12,8 @@
   <ol>
   <% @keyword_articles["response"]["docs"].each do |article| %>
     <li><%= article["lead_paragraph"] %></li>
+    <!-- articleへのリンクを作らないといいねとかブックマークできない -->
+<!--     link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
   <% end %>
   </ol>
 <% elsif @website.name == "Financial Times" %>
@@ -33,4 +35,22 @@
   <% if @page != nil %>
     <%= @page.summary %>
   <% end %>
+<% elsif @website.name == "News API" %>
+  <%#= simple_form_for @website do |f| %>
+    <%#= f.input :country %>
+    <%#= f.submit %>
+  <%# end %>
+  <ul>
+    <%= @country_articles.each do |article| %>
+      <li><%= article["title"] %></li>
+      <li><%= article["description"] %></li>
+    <% end %>
+  </ul>
+<!--   <ul>
+    <%# @top_headlines.each do |headline| %>
+      <li><%#= headline.title %></li>
+      <li><%#= headline.description %></li>
+      <li><%#= headline.url %></li>
+    <%# end %>
+  </ul> -->
 <% end %>

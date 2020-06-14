@@ -38,6 +38,9 @@ Website.create!(
   url: "https://www.wikipedia.org/"
 )
 
+# 自動的にシードやる設定にしないとアーティクルがdbに保存されない
+# news apiはやりやすいかも
+
 # puts 'Creating articles...'
 # Article.create!(
 #   name: 'test',
