@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :favorite_articles, through: :favorites, source: :article
   has_many :like_articles, through: :likes, source: :article
+  def already_liked?(article)
+    self.likes.exists?(article_id: article.id)
+  end
 end

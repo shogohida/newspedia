@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'websites/index'
-  get 'websites/show'
-  get 'articles/index'
-  get 'articles/show'
+  # get 'websites/index'
+  # get 'websites/show'
+  # get 'articles/index'
+  # get 'articles/show'
   devise_for :users
   root to: 'pages#home'
   # root to: "websites#index" ??
 
   resources :websites, only: [:index, :show, :update] do
-    resources :articles, only: [:index, :create]
+    resources :articles, only: [:index, :show, :create]
     # nest with article show?
     # no article create?
   end
