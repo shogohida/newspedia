@@ -1,7 +1,7 @@
-require 'json'
-require 'open-uri'
-require 'wikipedia'
-require 'news-api'
+# require 'json'
+# require 'open-uri'
+# require 'wikipedia'
+# require 'news-api'
 
 class WebsitesController < ApplicationController
   def index
