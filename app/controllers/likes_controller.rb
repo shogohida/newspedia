@@ -1,12 +1,21 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.create(article_id: params[:article_id])
-    #redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @like = Like.find_by(article_id: params[:article_id], user_id: current_user.id)
     @like.destroy
-    #redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 end
+
+# test memo
+
+# Rspec.describe Like do
+#  describe '#create' do
+#   it '' do....
+
+# no create for liked article
+# no destroy for not yer liked article

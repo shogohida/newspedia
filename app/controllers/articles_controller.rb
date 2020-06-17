@@ -109,3 +109,34 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:website_id, :name, :date, :summary, :url, :content, :memo)
   end
 end
+
+# test memo
+# Wikipedia, 100% exact
+# FT, time must be before Time.now
+# for all,
+# RSpec.describe Article do
+# describe '#index' do
+# need to use before??
+# or let?
+#   context "@articleが保存できた時" do
+
+#     it "データベースに値が保存される" do
+#       expect().to eq ''
+#       maybe this one, expect(article.save).to be_truthy
+#     end
+
+#     it "正しいビューに変遷する" do
+#     end
+
+#   end
+
+#   context "@articleが保存できなかった時" do
+
+#     it "データベースに値が保存されない" do
+#        expect(article.save).to be_falthy
+#     end
+
+#     it "正しいビューに変遷する" do
+#     end
+
+#   end
