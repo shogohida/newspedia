@@ -12,7 +12,7 @@ RSpec.describe User, type: :system do
     expect(user.errors[:name]).to include("can't be blank")
   end
 
-  it "a user id invalid if they don't have an email"  do
+  it "a user is invalid if they don't have an email" do
     user = FactoryBot.build(:user, email: nil)
     user.valid?
     expect(user.errors[:email]).to include("can't be blank")

@@ -13,7 +13,7 @@ module Newspedia
       generate.helper false
       generate.test_framework :test_unit, fixture: false
       generate.factory_bot false
-      generate.factory_bot dir : 'custom/dir/for/factories'
+      generate.factory_bot dir: 'custom/dir/for/factories'
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
