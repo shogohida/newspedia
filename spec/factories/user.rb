@@ -1,16 +1,20 @@
-# FactoryBot.define do
+FactoryBot.define do
+  # Userモデルのテストデータを定義
+  factory :shogo, class: User do
+    name 'Shogo'
+    email 'shogo@gmail.com'
+    password '123456'
+  end
 
-#   # Userモデルのテストデータaliceを定義
-#   factory :alice, class: User do
-#     name 'Alice'
-#     admin true
-#   end
+  factory :julien, class: User do
+    name 'Julien'
+    email 'julien@gmail.com'
+    password '123456'
+  end
 
-#   factory :bob, class: User do
-#     name 'Bob'
-#     admin false
-#   end
-
-#   # ...
-
-# end
+  factory :yun, class: User do
+    name 'Yun'
+    email 'yun@gmal.com'
+    password '123456'
+  end
+end
