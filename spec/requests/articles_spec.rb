@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # test memo
 # Wikipedia, 100% exact
 # FT, time must be before Time.now
