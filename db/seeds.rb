@@ -4,15 +4,15 @@
 # puts 'Deleting events...'
 # Article.destroy_all
 
-puts 'Deleting users...'
-User.destroy_all
+# puts 'Deleting users...'
+# User.destroy_all
 
-puts 'Creating users...'
-@shogo = User.create!(
-  name: 'Shogo',
-  email: 'shogo@gmail.com',
-  password: '123456'
-)
+# puts 'Creating users...'
+# @shogo = User.create!(
+#   name: 'Shogo',
+#   email: 'shogo@gmail.com',
+#   password: '123456'
+# )
 
 puts "Deleting articles..."
 Article.destroy_all
