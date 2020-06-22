@@ -9,7 +9,8 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:2.6.6-node # use a tailored CircleCI docker image.
+      - image: cimg/ruby:2.6.6-node 
+      - image: circleci/ruby:2.6.6
     steps:
       - checkout # pull down our git code.
       - ruby/install-deps # use the ruby orb to install dependencies
@@ -66,4 +67,4 @@ workflows:
       - build         # Run build first.
       - test:         # Then run test,
           requires:   # Test requires that build passes for it to run.
-            - build  
+            - build
