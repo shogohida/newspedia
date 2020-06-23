@@ -34,6 +34,7 @@ gem 'devise'
 gem 'wikipedia-client'
 gem 'pundit'
 gem "news-api"
+gem 'bullet', group: 'development'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
