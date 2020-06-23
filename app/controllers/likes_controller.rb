@@ -18,4 +18,4 @@ end
 #   it '' do....
 
 # no create for liked article
-# no destroy for not yer liked article
+# no destroy for not your liked article
