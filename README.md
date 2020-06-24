@@ -1,1 +1,5 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# Main features
+To gather information from several news websites
+
+# Future features
+1 To gather live financial information and to show it with a graph
