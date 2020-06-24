@@ -46,7 +46,7 @@
   <% end %>
 <% elsif @website.name == "News API" %>
   <%= simple_form_for @website do |f| %>
-    <%= f.input :country %>
+    <%= f.input :keyword, label: "country" %>
     <!-- select as: : ["Japan, "US",...] -->
     <%= f.submit %>
   <% end %>
@@ -63,4 +63,10 @@
       <li><%#= headline.url %></li>
     <%# end %>
   </ul> -->
+<% elsif @website.name == "COVID-19 Data" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :keyword, label: "country" %>
+    <!-- select as: : ["Japan, "US",...] -->
+    <%= f.submit %>
+  <% end %>
 <% end %>
