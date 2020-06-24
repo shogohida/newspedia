@@ -41,6 +41,10 @@ Website.create!(
   url: "https://www.wikipedia.org/"
 )
 
+Website.create!(
+  name: "COVID-19 Data",
+  url: "https://coronavirus.jhu.edu/map.html"
+)
 
 # 自動的にシードやる設定にしないとアーティクルがdbに保存されない
 # news apiはやりやすいかも
