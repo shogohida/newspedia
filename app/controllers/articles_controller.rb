@@ -6,7 +6,17 @@ require 'news-api'
 class ArticlesController < ApplicationController
   def index
     # このやり方だとインデックス行くたびに作られるけどいいのか
-    Article.destroy_all
+    # Article.destroy_all
+    # @articles = Article.where("likes.count = 0")
+    @articles = Article.includes(:likes).where(likes: { id: nil })
+    # @saved_articles = Article.joins(:likes)
+    # @articles = Article.all
+    # @saved_articles.each do |article|
+    #   @articles.find(article.id).destroy
+    # end
+    # likes.count = 0?
+    @articles.destroy_all
+    # .where.... if .liked?とかにしないと全部消えちゃう
     @website = Website.find(params[:website_id])
     # ホームページで媒体の選択とキーワードもしくは日時等（媒体に合わせて）入力させる
     # どうやって上の表示させるのかな？・・・
@@ -97,7 +107,8 @@ class ArticlesController < ApplicationController
         end
       end
     end
-    @articles = Article.where(website_id: @website.id)
+    @articles = Article.where(website_id: @website.id).includes(:likes).where.not(likes: { id: nil })
+    # @articles = Article.where(website_id: @website.id)
   end
 
   def show
