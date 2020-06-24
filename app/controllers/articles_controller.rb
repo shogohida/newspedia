@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
   def index
     # このやり方だとインデックス行くたびに作られるけどいいのか
     @website = Website.find(params[:website_id])
-    # 上のやついらないのか
     # if website.name == "nytimes"....
     # ホームページで媒体の選択とキーワードもしくは日時等（媒体に合わせて）入力させる
     # どうやって上の表示させるのかな？・・・
