@@ -8,19 +8,13 @@ class ArticlesController < ApplicationController
     # このやり方だとインデックス行くたびに作られるけどいいのか
     Article.destroy_all
     @website = Website.find(params[:website_id])
-    # if website.name == "nytimes"....
     # ホームページで媒体の選択とキーワードもしくは日時等（媒体に合わせて）入力させる
     # どうやって上の表示させるのかな？・・・
-    # 長くなるのでサービスを作る
+    # 長くなるのでサービスを作る select_website file
     # choose a type of articles you want to read (1 keyword, 2 date, 3 language)
-    # url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{keyword}&api-key=KWwSqakiTpXxhKaIS8211GJYbEeKgWCZ"
-
-    # API key to env file
-
-    # select_website
 
     if @website.name == "The New York Times"
-      url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=KWwSqakiTpXxhKaIS8211GJYbEeKgWCZ"
+      url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=#{ENV['ny_times_api_key']}"
       ny_serialized = open(url1).read
       @keyword_articles = JSON.parse(ny_serialized)
       # @array = []
@@ -40,7 +34,7 @@ class ArticlesController < ApplicationController
       @website.datetime = DateTime.now - 1
       # DateTime.now - 1 ??? daily news
       # 上書くとユーザーの入力リセットされるよ
-      url2 = "https://api.ft.com/content/notifications?apiKey=59cbaf20e3e06d3565778e7b7b9ba4f2d4ed4887b6861c77c7eda766&since=#{@website.datetime}"
+      url2 = "https://api.ft.com/content/notifications?apiKey=#{ENV['ft_api_key']}&since=#{@website.datetime}"
       # DateTime.now or Time.nowを別のクラスに直さないといけない　ももとやったやつ
       # 2020-06-12T13:50:00.000Z
       ft_serialized = open(url2).read
@@ -72,7 +66,7 @@ class ArticlesController < ApplicationController
       elsif @website.keyword == "Mexico"
         @website.country = "mx"
       end
-      url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=3370e2330c5145c8beababe2e2110742"
+      url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=#{ENV['news_api_api_key']}"
       news_api_serialized = open(url3).read
       @country_articles = JSON.parse(news_api_serialized)["articles"]
       @country_articles.each do |article|

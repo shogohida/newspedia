@@ -8,7 +8,7 @@ RSpec.describe "Articles", type: :request do
   describe "#index" do
     # need to use before?? or let?
     context "article is saved" do
-      it "article is saved in db" do
+      it "is saved in db" do
         website = Website.new(name: "Yomiuri")
         article = Article.new(content: "法務大臣逮捕", website: website)
         expect(article).to be_valid
@@ -21,7 +21,7 @@ RSpec.describe "Articles", type: :request do
     end
 
     context "article is not saved" do
-      it "article is not saved in db" do
+      it "is not saved in db" do
         website = Website.new(name: "Yomiuri")
         article1 = Article.create(content: "法務大臣逮捕", website: website)
         article2 = Article.new(content: "法務大臣逮捕", website: website)
