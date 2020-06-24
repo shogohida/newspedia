@@ -1,26 +1,24 @@
 <h1>Test</h1>
 
-@total_array = []
-<% @articles.each do |article| %>
-  <% array = [] %>
-  <% array.push(article.date) %>
-  <% array.push(article.name) %>
-  <% @total_array << array %>
-<% end %>
-
-  <%= pie_chart @total_array %>
+<%# if @articles.website.name == "COVID-19 Data" %>
+<%= column_chart Article.pluck(:date, :name) %>
+<%#= line_chart Article.group_by_day(:date).count %>
+<!-- name.to_i??
+ -->
 <!-- 消さないと全部出てきちゃう -->
 
-<% @articles.each do |article| %>
-  <%= article.date %>
-  <%= article.name %>
-<% end %>
+<%# @articles.each do |article| %>
+  <%#= article.date %>
+  <%#= article.name %>
+<%# end %>
 
-<% if @articles.website.name == "COVID-19 Data" %>
-<% else %>
+
+<%# else %>
   <ul>
     <% @articles.each do |article| %>
-      <li><%= article.content %></li>
+      <!-- <h4>Title: <strong><%#= article.name %></strong></h4> -->
+      <%= link_to "Title: #{article.name}", article_path(article) %>
+      <li>Abstract: <%= article.content %></li>
     <% end %>
   </ul>
-<% end %>
+<%# end %>
