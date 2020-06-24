@@ -35,6 +35,7 @@ gem 'pundit'
 gem "news-api"
 gem 'bullet', group: 'development'
 gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
