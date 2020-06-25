@@ -37,6 +37,7 @@ gem 'bullet', group: 'development'
 gem "chartkick"
 gem 'groupdate'
 gem 'htmlbeautifier'
+gem 'cloudinary', '~> 1.12.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'

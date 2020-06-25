@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # root to: "websites#index" ??
 
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :update]
 
   resources :websites, only: [:index, :show, :update] do
     resources :articles, only: [:index, :show, :create]
