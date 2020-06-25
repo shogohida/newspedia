@@ -10,4 +10,5 @@ class User < ApplicationRecord
   def already_liked?(article)
     self.likes.exists?(article_id: article.id)
   end
+  has_one_attached :photo
 end
