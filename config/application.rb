@@ -15,9 +15,14 @@ module Newspedia
       generate.factory_bot false
       generate.factory_bot dir: 'custom/dir/for/factories'
     end
+
+    # setting for AJAX
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.autoloader = :classic
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
