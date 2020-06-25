@@ -6,15 +6,12 @@ require 'news-api'
 class ArticlesController < ApplicationController
   def index
     # このやり方だとインデックス行くたびに作られるけどいいのか
-    # Article.destroy_all
-    # @articles = Article.where("likes.count = 0")
     @articles = Article.includes(:likes).where(likes: { id: nil })
     # @saved_articles = Article.joins(:likes)
     # @articles = Article.all
     # @saved_articles.each do |article|
     #   @articles.find(article.id).destroy
     # end
-    # likes.count = 0?
     @articles.destroy_all
     # .where.... if .liked?とかにしないと全部消えちゃう
     @website = Website.find(params[:website_id])
@@ -47,6 +44,8 @@ class ArticlesController < ApplicationController
       url2 = "https://api.ft.com/content/notifications?apiKey=#{ENV['ft_api_key']}&since=#{@website.datetime}"
       # DateTime.now or Time.nowを別のクラスに直さないといけない　ももとやったやつ
       # 2020-06-12T13:50:00.000Z
+      # t = Time.now
+      # t.strftime("%FT%T%:z")?
       ft_serialized = open(url2).read
       @recent_articles = JSON.parse(ft_serialized)
       @recent_articles["notifications"].each do |article|
@@ -69,12 +68,34 @@ class ArticlesController < ApplicationController
         @article.save
       end
     elsif @website.name == "News API"
-      if @website.keyword == "Japan" || @website.keyword == "japan"
+      if @website.keyword == "Japan"
         @website.country = "jp"
       elsif @website.keyword == "United States"
         @website.country = "us"
       elsif @website.keyword == "Mexico"
         @website.country = "mx"
+      elsif @website.keyword == "Brazil"
+        @website.country = "br"
+      elsif @website.keyword == "China"
+        @website.country = "cn"
+      elsif @website.keyword == "France"
+        @website.country = "fr"
+      elsif @website.keyword == "Germany"
+        @website.country = "de"
+      elsif @website.keyword == "India"
+        @website.country = "in"
+      elsif @website.keyword == "Russia"
+        @website.country = "ru"
+      elsif @website.keyword == "South Korea"
+        @website.country = "kr"
+      elsif @website.keyword == "United Kingdom"
+        @website.country = "gb"
+      elsif @website.keyword == "Australia"
+        @website.country = "au"
+      elsif @website.keyword == "UAE"
+        @website.country = "ae"
+      elsif @website.keyword == "Nigeria"
+        @website.country = "ng"
       end
       url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=#{ENV['news_api_api_key']}"
       news_api_serialized = open(url3).read
@@ -107,7 +128,7 @@ class ArticlesController < ApplicationController
         end
       end
     end
-    @articles = Article.where(website_id: @website.id).includes(:likes).where.not(likes: { id: nil })
+    @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
     # @articles = Article.where(website_id: @website.id)
   end
 

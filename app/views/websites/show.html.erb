@@ -46,7 +46,7 @@
   <% end %>
 <% elsif @website.name == "News API" %>
   <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword, label: "country" %>
+    <%= f.select :keyword, label: "country", options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria"]) %>
     <!-- select as: : ["Japan, "US",...] -->
     <%= f.submit %>
   <% end %>
