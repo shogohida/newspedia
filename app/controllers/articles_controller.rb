@@ -130,6 +130,7 @@ class ArticlesController < ApplicationController
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
     # @articles = Article.where(website_id: @website.id)
+    # @search_photo = Unsplash::Photo.search("#{@website.keyword}")[0][:urls][:raw]
   end
 
   def show

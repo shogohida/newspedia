@@ -1,72 +1,68 @@
 <h1>Test</h1>
-
 <%#= simple_form_for @website do |f| %>
   <%#= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
-<%# end %>
-
-<% if @website.name == "The New York Times" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword %>
-    <%= f.submit %>
-  <% end %>
-
-  <h2>The New York Times is a traditional new paper from US. It has been providing its service since 1851....</h2>
-  <%#= simple_form_for do |f| %>
-
   <%# end %>
-
-  <!-- <ol> -->
-  <%# @keyword_articles["response"]["docs"].each do |article| %>
-    <!-- <li><%#= article["lead_paragraph"] %></li> -->
-  <%# @array.each do |article| %>
-    <!-- <li><%#= article %></li> -->
-    <!-- articleへのリンクを作らないといいねとかブックマークできない -->
-    <%#= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
-    <!-- link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
-  <%# end %>
-  <!-- </ol> -->
-<% elsif @website.name == "Financial Times" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :datetime %>
-    <%= f.submit %>
-  <% end %>
-<!--   <ol>
+  <% if @website.name == "The New York Times" %>
+    <%= simple_form_for @website do |f| %>
+      <%= f.input :keyword %>
+      <%= f.submit %>
+    <% end %>
+    <h2>The New York Times is a traditional new paper from US. It has been providing its service since 1851....</h2>
+    <%#= simple_form_for do |f| %>
+      <%# end %>
+      <!-- <ol> -->
+      <%# @keyword_articles["response"]["docs"].each do |article| %>
+        <!-- <li><%#= article["lead_paragraph"] %></li> -->
+        <%# @array.each do |article| %>
+          <!-- <li><%#= article %></li> -->
+          <!-- articleへのリンクを作らないといいねとかブックマークできない -->
+          <%#= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
+          <!-- link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
+          <%# end %>
+          <!-- </ol> -->
+        <% elsif @website.name == "Financial Times" %>
+          <%= simple_form_for @website do |f| %>
+            <%= f.input :datetime %>
+            <%= f.submit %>
+          <% end %>
+          <!--   <ol>
   <%# @recent_articles["notifications"].each do |article| %>
     <li><%#= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
   < link_to article.title, path above..... -->
-  <%# end %>
-  <!-- </ol> -->
-<% elsif @website.name == "Wikipedia" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword %>
-    <%= f.submit %>
-  <% end %>
-  <% if @page != nil %>
-    <%= @page.summary %>
-  <% end %>
-<% elsif @website.name == "News API" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.select :keyword, label: "country", options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria"]) %>
-    <!-- select as: : ["Japan, "US",...] -->
-    <%= f.submit %>
-  <% end %>
-<!--   <ul>
+          <%# end %>
+          <!-- </ol> -->
+        <% elsif @website.name == "Wikipedia" %>
+          <%= simple_form_for @website do |f| %>
+            <%= f.input :keyword %>
+            <%= f.submit %>
+          <% end %>
+          <% if @page != nil %>
+            <%= @page.summary %>
+          <% end %>
+        <% elsif @website.name == "News API" %>
+          <%= simple_form_for @website do |f| %>
+            <%= f.select :keyword, options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria"]) %>
+            <!-- select as: : ["Japan, "US",...] -->
+            <%= f.submit %>
+          <% end %>
+          <!--   <ul>
     <%#= @country_articles.each do |article| %>
       <li><%#= article["title"] %></li>
       <li><%#= article["description"] %></li>
     <%# end %>
   </ul> -->
-<!--   <ul>
+          <!--   <ul>
     <%# @top_headlines.each do |headline| %>
       <li><%#= headline.title %></li>
       <li><%#= headline.description %></li>
       <li><%#= headline.url %></li>
     <%# end %>
   </ul> -->
-<% elsif @website.name == "COVID-19 Data" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword, label: "country" %>
-    <!-- select as: : ["Japan, "US",...] -->
-    <%= f.submit %>
-  <% end %>
-<% end %>
+        <% elsif @website.name == "COVID-19 Data" %>
+          <%= simple_form_for @website do |f| %>
+            <%= f.input :keyword, label: "country" %>
+            <!-- select as: : ["Japan, "US",...] -->
+            <%= f.submit %>
+          <% end %>
+        <% end %>
+        <!-- to delete beautifulhtml? -->
