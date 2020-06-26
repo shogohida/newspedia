@@ -9,13 +9,15 @@
   <%#= article.date %>
   <%#= article.name %>
   <%# end %>
-  <%#= image_tag @search_photo %>
+  <%= image_tag @photo %>
   <%# else %>
   <ul>
     <% @articles.each do |article| %>
       <!-- <h4>Title: <strong><%#= article.name %></strong></h4> -->
       <%= link_to "Title: #{article.name}", article_path(article) %>
       <li>Abstract: <%= article.content %></li>
+      <%= image_tag article.image, alt: "alttext" %>
+<!--       TODO, resize the photos, 場合分け　コロナは写真ないから -->
     <% end %>
   </ul>
   <%# end %>

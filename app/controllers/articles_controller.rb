@@ -3,6 +3,13 @@ require 'open-uri'
 require 'wikipedia'
 require 'news-api'
 
+# Unsplash.configure do |config|
+#   config.application_access_key = ENV["unsplash_api_key"]
+#   config.application_secret = ENV["unsplash_secret_key"]
+#   config.application_redirect_uri = "https://newspedia.com/callback"
+#   config.utm_source = "newspedia"
+# end
+
 class ArticlesController < ApplicationController
   def index
     # このやり方だとインデックス行くたびに作られるけどいいのか
@@ -31,7 +38,8 @@ class ArticlesController < ApplicationController
           website: @website,
           name: article["headline"]["main"],
           content: article["abstract"],
-          url: article["web_url"]
+          url: article["web_url"],
+          image: "https://www.nytimes.com/" + article["multimedia"][0]["url"]
         )
         if @article.valid?
           @article.save
@@ -62,7 +70,10 @@ class ArticlesController < ApplicationController
       @page = Wikipedia.find(@website.keyword)
       @article = Article.new(
         website: @website,
-        content: @page.summary
+        name: @page.title,
+        content: @page.summary,
+        url: @page.fullurl,
+        image: @page.main_image_url
       )
       if @article.valid?
         @article.save
@@ -105,7 +116,8 @@ class ArticlesController < ApplicationController
           website: @website,
           name: article["title"],
           content: article["description"],
-          url: article["url"]
+          url: article["url"],
+          image: article["urlToImage"]
         )
         if @article.valid?
           @article.save
@@ -130,7 +142,12 @@ class ArticlesController < ApplicationController
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
     # @articles = Article.where(website_id: @website.id)
-    # @search_photo = Unsplash::Photo.search("#{@website.keyword}")[0][:urls][:raw]
+    # url5 = "https://api.unsplash.com/search/photos?page=1&client_id=#{ENV['unsplash_api_key']}&query=#{@website.keyword}"
+    # photo_serialized = open(url5).read
+    # @photo = JSON.parse(photo_serialized)["results"][0]["url"]["raw"]
+    # delete unsplash gem?
+    @photo = "https://source.unsplash.com/featured/?#{@website.keyword}"
+    # https://source.unsplash.com/featured/?
   end
 
   def show
