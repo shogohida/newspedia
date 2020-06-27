@@ -24,6 +24,7 @@ default: &default
   username: postgres
   password: postgres
   pool: 5
+  port: 5432
 #  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 # default: &default
@@ -70,7 +71,7 @@ development:
 test:
   <<: *default
   database: newspedia_test
-  host: localhost
+  host: db
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
