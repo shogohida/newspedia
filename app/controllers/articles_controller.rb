@@ -40,8 +40,11 @@ class ArticlesController < ApplicationController
           summary: article["abstract"],
           content: article["lead_paragraph"],
           url: article["web_url"],
-          image: "https://www.nytimes.com/" + article["multimedia"][0]["url"]
+          # image: "https://www.nytimes.com/" + article["multimedia"][0]["url"]
         )
+        unless article["multimedia"].nil?
+          @article.update(image: "https://www.nytimes.com/" + article["multimedia"][0]["url"])
+        end
         if @article.valid?
           @article.save
         end

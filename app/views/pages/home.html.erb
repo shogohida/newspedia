@@ -7,10 +7,17 @@
   <option value="wikipedia">Wikipedia</option>
 </select> -->
 <!-- 値を受け取ってlink_to各ページへ -->
-<h1>Test (Homepage) </h1>
+<!-- <h1>Test (Homepage) </h1> -->
 <%#= simple_form_for @website do |f| %>
   <%#= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
   <%# end %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+    <div class="container">
+      <h1><strong>Newspedia</strong></h1>
+      <p>Collect articles from different news sources and create your favourite article list!</p>
+      <!--       <a class="btn btn-flat" href="#">Apply now</a> -->
+    </div>
+  </div>
   <h2>Select a website</h2>
   <% @websites.each do |website| %>
     <%= website.name %>
@@ -20,6 +27,6 @@
   <!--   if website.name == "The New York Times"
   card product? ロゴとの兼ね合い
   <p>Search articles by keyword</p>
-  if "News API"
-  <p>Search articles by country</p>
-  ..... -->
+if "News API"
+<p>Search articles by country</p>
+.....
