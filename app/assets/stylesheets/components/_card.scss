@@ -1,3 +1,4 @@
+// for articles at their index page
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -29,4 +30,40 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+
+// for websites at homepage
+.card-homepage {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 480px;
+}
+
+.card-homepage > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-homepage h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-homepage p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-homepage .card-homepage-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
 }

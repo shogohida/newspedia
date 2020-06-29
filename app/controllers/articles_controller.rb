@@ -3,37 +3,18 @@ require 'open-uri'
 require 'wikipedia'
 require 'news-api'
 
-# Unsplash.configure do |config|
-#   config.application_access_key = ENV["unsplash_api_key"]
-#   config.application_secret = ENV["unsplash_secret_key"]
-#   config.application_redirect_uri = "https://newspedia.com/callback"
-#   config.utm_source = "newspedia"
-# end
-
 class ArticlesController < ApplicationController
   def index
     # このやり方だとインデックス行くたびに作られるけどいいのか
     @articles = Article.includes(:likes).where(likes: { id: nil })
-    # @saved_articles = Article.joins(:likes)
-    # @articles = Article.all
-    # @saved_articles.each do |article|
-    #   @articles.find(article.id).destroy
-    # end
     @articles.destroy_all
-    # .where.... if .liked?とかにしないと全部消えちゃう
     @website = Website.find(params[:website_id])
-    # ホームページで媒体の選択とキーワードもしくは日時等（媒体に合わせて）入力させる
-    # どうやって上の表示させるのかな？・・・
     # 長くなるのでサービスを作る select_website file
-    # choose a type of articles you want to read (1 keyword, 2 date, 3 language)
-
     if @website.name == "The New York Times"
       url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=#{ENV['ny_times_api_key']}"
       ny_serialized = open(url1).read
       @keyword_articles = JSON.parse(ny_serialized)
-      # @array = []
       @keyword_articles["response"]["docs"].each do |article|
-        # @array << article["lead_paragraph"]
         @article = Article.new(
           website: @website,
           name: article["headline"]["main"],
@@ -45,9 +26,10 @@ class ArticlesController < ApplicationController
         unless article["multimedia"].nil?
           @article.update(image: "https://www.nytimes.com/" + article["multimedia"][0]["url"])
         end
-        if @article.valid?
-          @article.save
-        end
+        @article.valid? ? @article.save : @article
+        # if @article.valid?
+        #   @article.save
+        # end
       end
     elsif @website.name == "Financial Times"
       @website.datetime = DateTime.now - 1
@@ -61,14 +43,11 @@ class ArticlesController < ApplicationController
       ft_serialized = open(url2).read
       @recent_articles = JSON.parse(ft_serialized)
       @recent_articles["notifications"].each do |article|
-        # @array << article["lead_paragraph"]
         @article = Article.new(
           website: @website,
           url: article["apiUrl"][0..7] + article["apiUrl"][12..-1]
         )
-        if @article.valid?
-          @article.save
-        end
+        @article.valid? ? @article.save : @article
       end
     elsif @website.name == "Wikipedia"
       @page = Wikipedia.find(@website.keyword)
@@ -80,38 +59,23 @@ class ArticlesController < ApplicationController
         url: @page.fullurl,
         image: @page.main_image_url
       )
-      if @article.valid?
-        @article.save
-      end
+      @article.valid? ? @article.save : @article
     elsif @website.name == "News API"
-      if @website.keyword == "Japan"
-        @website.country = "jp"
-      elsif @website.keyword == "United States"
-        @website.country = "us"
-      elsif @website.keyword == "Mexico"
-        @website.country = "mx"
-      elsif @website.keyword == "Brazil"
-        @website.country = "br"
-      elsif @website.keyword == "China"
-        @website.country = "cn"
-      elsif @website.keyword == "France"
-        @website.country = "fr"
-      elsif @website.keyword == "Germany"
-        @website.country = "de"
-      elsif @website.keyword == "India"
-        @website.country = "in"
-      elsif @website.keyword == "Russia"
-        @website.country = "ru"
-      elsif @website.keyword == "South Korea"
-        @website.country = "kr"
-      elsif @website.keyword == "United Kingdom"
-        @website.country = "gb"
-      elsif @website.keyword == "Australia"
-        @website.country = "au"
-      elsif @website.keyword == "UAE"
-        @website.country = "ae"
-      elsif @website.keyword == "Nigeria"
-        @website.country = "ng"
+      case @website.keyword
+      when "Japan" then @website.country = "jp"
+      when "United States" then @website.country = "us"
+      when "Mexico" then @website.country = "mx"
+      when "Brazil" then @website.country = "br"
+      when "China" then @website.country = "cn"
+      when "France" then @website.country = "fr"
+      when "Germany" then @website.country = "de"
+      when "India" then @website.country = "in"
+      when "Russia" then @website.country = "ru"
+      when "South Korea" then @website.country = "kr"
+      when "United Kingdom" then @website.country = "gb"
+      when "Australia" then @website.country = "au"
+      when "UAE" then @website.country = "ae"
+      when "Nigeria" then @website.country = "ng"
       end
       url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=#{ENV['news_api_api_key']}"
       news_api_serialized = open(url3).read
@@ -125,9 +89,7 @@ class ArticlesController < ApplicationController
           url: article["url"],
           image: article["urlToImage"]
         )
-        if @article.valid?
-          @article.save
-        end
+        @article.valid? ? @article.save : @article
       end
     elsif @website.name == "COVID-19 Data"
       # if @website.keyword.split.length <= 1....
@@ -141,19 +103,10 @@ class ArticlesController < ApplicationController
           content: article["Deaths"],
           date: article["Date"]
         )
-        if @article.valid?
-          @article.save
-        end
+        @article.valid? ? @article.save : @article
       end
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
-    # @articles = Article.where(website_id: @website.id)
-    # url5 = "https://api.unsplash.com/search/photos?page=1&client_id=#{ENV['unsplash_api_key']}&query=#{@website.keyword}"
-    # photo_serialized = open(url5).read
-    # @photo = JSON.parse(photo_serialized)["results"][0]["url"]["raw"]
-    # delete unsplash gem?
-    @photo = "https://source.unsplash.com/featured/?#{@website.keyword}"
-    # https://source.unsplash.com/featured/?
   end
 
   def show
@@ -167,15 +120,15 @@ class ArticlesController < ApplicationController
     # end
   end
 
-  def create
-    @website = Website.find(params[:website_id])
-    @article = Article.new(content: @array)
-    @article.website = @website
-    # @article.user_id = current_user.id
-    @article.save
-    # データベースに保存するため
-    # raise
-  end
+  # def create
+  #   @website = Website.find(params[:website_id])
+  #   @article = Article.new(content: @array)
+  #   @article.website = @website
+  #   # @article.user_id = current_user.id
+  #   @article.save
+  #   # データベースに保存するため
+  #   # raise
+  # end
 
   def update
     @article = Article.find(params[:id])
