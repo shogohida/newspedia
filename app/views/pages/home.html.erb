@@ -1,11 +1,25 @@
-<h1>Pages#home</h1>
+<!-- <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-
 <select name="website" id="website">
   <option value="nytimes">The New York Times</option>
   <option value="ft">Financial Times</option>
   <option value="news-api">News API</option>
   <option value="wikipedia">Wikipedia</option>
-</select>
-
+</select> -->
 <!-- 値を受け取ってlink_to各ページへ -->
+<h1>Test (Homepage) </h1>
+<%#= simple_form_for @website do |f| %>
+  <%#= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
+  <%# end %>
+  <h2>Select a website</h2>
+  <% @websites.each do |website| %>
+    <%= website.name %>
+    <%= link_to "Search articles", website_path(website) %>
+    <!-- search for keyword, search for date, search with more depth -->
+  <% end %>
+  <!--   if website.name == "The New York Times"
+  card product? ロゴとの兼ね合い
+  <p>Search articles by keyword</p>
+  if "News API"
+  <p>Search articles by country</p>
+  ..... -->
