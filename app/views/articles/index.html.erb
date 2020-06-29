@@ -1,4 +1,4 @@
-<h1>Test</h1>
+<h1>Search results</h1>
 <%# if @articles.website.name == "COVID-19 Data" %>
 <%= column_chart Article.pluck(:date, :name) %>
 <%#= line_chart Article.group_by_day(:date).count %>
@@ -9,15 +9,20 @@
   <%#= article.date %>
   <%#= article.name %>
   <%# end %>
-  <%= image_tag @photo %>
+  <%#= image_tag @photo %>
   <%# else %>
-  <ul>
-    <% @articles.each do |article| %>
-      <!-- <h4>Title: <strong><%#= article.name %></strong></h4> -->
-      <%= link_to "Title: #{article.name}", article_path(article) %>
-      <li>Abstract: <%= article.content %></li>
-      <%= image_tag article.image, alt: "alttext" %>
-<!--       TODO, resize the photos, 場合分け　コロナは写真ないから -->
-    <% end %>
-  </ul>
+  <!--   <ul>
+    <h4>Title: <strong><%#= article.name %></strong></h4>
+
+</ul> -->
   <%# end %>
+  <% @articles.each do |article| %>
+    <div class="card-product">
+      <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
+      <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> -->
+      <div class="card-product-infos">
+        <h2><%= link_to article.name, website_article_path(@website, article) %></h2>
+        <p><%= article.summary %></p>
+      </div>
+    </div>
+  <% end %>

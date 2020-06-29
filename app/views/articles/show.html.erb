@@ -1,16 +1,16 @@
-<h1>投稿詳細ページ</h1>
+<h1>Details of the article</h1>
 <h3><%#= @article.user.email %></h3>
 <h5><%= @article.content %></h5>
-<h5><%= link_to "check this article", @article.url, target: :_blank %></h5>
-<h3>いいね件数: <%= @article.likes.count %></h3>
+<h5><%= link_to "Check this article", @article.url, target: :_blank %></h5>
+<h3>The number of likes: <%= @article.likes.count %></h3>
 <% if current_user.already_liked?(@article) %>
-  <%= button_to 'いいねを取り消す', article_like_path(@article), method: :delete, remote: true  %>
+  <%= button_to 'Unlike', article_like_path(@article), method: :delete, remote: true  %>
 <% else %>
-  <%= button_to 'いいね', article_likes_path(@article), remote: true %>
+  <%= button_to 'Like', article_likes_path(@article), remote: true %>
 <% end %>
-<h2>いいねしたユーザー</h2>
+<h2>Users who liked this article</h2>
 <% @article.like_users.each do |user| %>
   <li><%= user.name %></li>
 <% end %>
-
-<%= link_to "ホームへ戻る", articles_path %>
+<%#= link_to "Back to search results", website_articles_path(@website) %>
+<%= link_to "Check the articles you liked", user_path(current_user) %>
