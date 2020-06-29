@@ -12,6 +12,7 @@
 <% @article.like_users.each do |user| %>
   <li><%= user.name %></li>
 <% end %>
+<%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank' %>
 <%#= link_to "Back to search results", website_articles_path(@website) %>
 <%= link_to "Check the articles you liked", user_path(current_user) %>
 <%= link_to 'Twitter', "https://twitter.com/share?url=#{@article.url}", title: 'Twitter', target: '_blank' %>
