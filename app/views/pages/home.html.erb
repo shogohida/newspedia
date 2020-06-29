@@ -33,6 +33,18 @@
             </div>
           </div>
         </div>
+      <% elsif website.name == "Financial Times" %>
+        <div class="card-homepage mr-3">
+          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <!-- <img src="new-york-times.svg" alt="new york times"> -->
+          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
+          <div class="card-homepage-infos">
+            <div>
+              <h2 class="salmon-text"><%= website.name %></h2>
+              <%= link_to "Search latest articles", website_path(website) %>
+            </div>
+          </div>
+        </div>
       <% elsif website.name == "News API" %>
         <div class="card-homepage mr-3">
           <%= image_tag "new-york-times.svg", alt: "alttext" %>
