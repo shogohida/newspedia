@@ -20,13 +20,78 @@
   </div>
   <h2>Select a website</h2>
   <% @websites.each do |website| %>
-    <%= website.name %>
-    <%= link_to "Search articles", website_path(website) %>
-    <!-- search for keyword, search for date, search with more depth -->
+    <div class="flexbox justify-content-around mt-5">
+      <% if website.name == "The New York Times" %>
+        <div class="card-homepage mr-3">
+          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <!-- <img src="new-york-times.svg" alt="new york times"> -->
+          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
+          <div class="card-homepage-infos">
+            <div>
+              <h2 class="salmon-text"><%= website.name %></h2>
+              <%= link_to "Search articles by keyword", website_path(website) %>
+            </div>
+          </div>
+        </div>
+      <% elsif website.name == "News API" %>
+        <div class="card-homepage mr-3">
+          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <!-- <img src="new-york-times.svg" alt="new york times"> -->
+          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
+          <div class="card-homepage-infos">
+            <div>
+              <h2 class="salmon-text"><%= website.name %></h2>
+              <%= link_to "Search articles by country", website_path(website) %>
+            </div>
+          </div>
+        </div>
+      <% elsif website.name == "Wikipedia" %>
+        <div class="card-homepage mr-3">
+          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <!-- <img src="new-york-times.svg" alt="new york times"> -->
+          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
+          <div class="card-homepage-infos">
+            <div>
+              <h2 class="salmon-text"><%= website.name %></h2>
+              <%= link_to "Search page by name", website_path(website) %>
+            </div>
+          </div>
+        </div>
+      <% elsif website.name == "COVID-19 Data" %>
+        <div class="card-homepage mr-3">
+          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <!-- <img src="new-york-times.svg" alt="new york times"> -->
+          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
+          <div class="card-homepage-infos">
+            <div>
+              <h2 class="salmon-text"><%= website.name %></h2>
+              <%= link_to "Search COVID-19 data by country", website_path(website) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
   <!--   if website.name == "The New York Times"
   card product? ロゴとの兼ね合い
   <p>Search articles by keyword</p>
 if "News API"
 <p>Search articles by country</p>
-.....
+..... -->
+  <!--   <div class="flexbox justify-content-around mt-5">
+    <div class="card-homepage mr-3">
+      <%#= image_tag "new-york-times.svg", alt: "alttext" %>
+      <img src="new-york-times.svg" alt="new york times">
+            <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" >
+      <div class="card-homepage-infos">
+        <div>
+          <h2 class="salmon-text">The New York Times</h2>
+          <h2>Search by keyword</h2>
+          <%#= link_to "Search by keyword", website_path(website) %>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <%#= website.name %>
+  <%#= link_to "Search articles", website_path(website) %>
+  <!-- search for keyword, search for date, search with more depth -->

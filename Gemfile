@@ -36,9 +36,9 @@ gem "news-api"
 gem 'bullet', group: 'development'
 gem "chartkick"
 gem 'groupdate'
-gem 'htmlbeautifier'
+# gem 'htmlbeautifier'
 gem 'cloudinary', '~> 1.12.0'
-gem 'unsplash'
+# gem 'unsplash'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
