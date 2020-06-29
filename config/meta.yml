@@ -1,0 +1,6 @@
+meta_product_name: "Newspedia"
+meta_title: "Newspedia - Collect your favourite articles here!"
+meta_description: "Newspedia is a website which collects articles from different news sources"
+
+meta_image: "newspaper-154444_960_720.webp" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
