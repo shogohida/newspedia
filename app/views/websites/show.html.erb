@@ -25,7 +25,7 @@
         <% elsif @website.name == "Financial Times" %>
           <%= simple_form_for @website do |f| %>
             <%= f.input :datetime %>
-            <%= f.button :sumbit, "Search articles"  %>
+            <%= f.submit "Search articles" %>
           <% end %>
           <h2>The Financial Times (FT) is an international daily newspaper printed in broadsheet and published digitally that focuses on business and economic current affairs. Based in London, England, the paper is owned by the Japanese holding company, Nikkei, with core editorial offices across Britain, the United States, and continental Europe.</h2>
           <!--   <ol>

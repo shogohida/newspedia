@@ -14,3 +14,7 @@
 <% end %>
 <%#= link_to "Back to search results", website_articles_path(@website) %>
 <%= link_to "Check the articles you liked", user_path(current_user) %>
+<%= link_to 'Twitter', "https://twitter.com/share?url=#{@article.url}", title: 'Twitter', target: '_blank' %>
+<%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank' %>
+<%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank' %>
+<%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", target: '_blank' %>

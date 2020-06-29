@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
         # end
       end
     elsif @website.name == "Financial Times"
-      @website.datetime = DateTime.now - 1
+      @website.datetime = Time.now.strftime("%FT%T%:z")
       # DateTime.now - 1 ??? daily news
       # 上書くとユーザーの入力リセットされるよ
       url2 = "https://api.ft.com/content/notifications?apiKey=#{ENV['ft_api_key']}&since=#{@website.datetime}"
