@@ -18,11 +18,18 @@
   <%# end %>
   <% @articles.each do |article| %>
     <div class="card-product">
-      <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
-      <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> -->
-      <div class="card-product-infos">
-        <h2><%= link_to article.name, website_article_path(@website, article) %></h2>
-        <p><%= article.summary %></p>
-      </div>
+      <% if article.image == nil %>
+        <div class="card-product-infos">
+          <h2><%= link_to article.name, website_article_path(@website, article) %></h2>
+          <p><%= article.summary %></p>
+        </div>
+      <% else %>
+        <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
+        <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> -->
+        <div class="card-product-infos">
+          <h2><%= link_to article.name, website_article_path(@website, article) %></h2>
+          <p><%= article.summary %></p>
+        </div>
+      <% end %>
     </div>
   <% end %>
