@@ -7,7 +7,7 @@
       <%= f.input :keyword %>
       <%= f.submit %>
     <% end %>
-    <h2>The New York Times is a traditional new paper from US. It has been providing its service since 1851....</h2>
+    <h2>The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other newspaper. The Times is ranked 18th in the world by circulation and 3rd in the U.S.</h2>
     <%#= simple_form_for do |f| %>
       <%# end %>
       <!-- <ol> -->
@@ -25,6 +25,7 @@
             <%= f.input :datetime %>
             <%= f.submit %>
           <% end %>
+          <h2>The Financial Times (FT) is an international daily newspaper printed in broadsheet and published digitally that focuses on business and economic current affairs. Based in London, England, the paper is owned by the Japanese holding company, Nikkei, with core editorial offices across Britain, the United States, and continental Europe.</h2>
           <!--   <ol>
   <%# @recent_articles["notifications"].each do |article| %>
     <li><%#= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
@@ -36,15 +37,14 @@
             <%= f.input :keyword %>
             <%= f.submit %>
           <% end %>
-          <% if @page != nil %>
-            <%= @page.summary %>
-          <% end %>
+          <h2>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</h2>
         <% elsif @website.name == "News API" %>
           <%= simple_form_for @website do |f| %>
             <%= f.select :keyword, options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria"]) %>
             <!-- select as: : ["Japan, "US",...] -->
             <%= f.submit %>
           <% end %>
+          <h2>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</h2>
           <!--   <ul>
     <%#= @country_articles.each do |article| %>
       <li><%#= article["title"] %></li>
@@ -64,5 +64,6 @@
             <!-- select as: : ["Japan, "US",...] -->
             <%= f.submit %>
           <% end %>
+          <h2>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</h2>
         <% end %>
         <!-- to delete beautifulhtml? -->
