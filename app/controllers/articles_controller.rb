@@ -37,7 +37,8 @@ class ArticlesController < ApplicationController
         @article = Article.new(
           website: @website,
           name: article["headline"]["main"],
-          content: article["abstract"],
+          summary: article["abstract"],
+          content: article["lead_paragraph"],
           url: article["web_url"],
           image: "https://www.nytimes.com/" + article["multimedia"][0]["url"]
         )
@@ -71,7 +72,8 @@ class ArticlesController < ApplicationController
       @article = Article.new(
         website: @website,
         name: @page.title,
-        content: @page.summary,
+        content: @page.content,
+        summary: @page.summary,
         url: @page.fullurl,
         image: @page.main_image_url
       )
@@ -115,7 +117,8 @@ class ArticlesController < ApplicationController
         @article = Article.new(
           website: @website,
           name: article["title"],
-          content: article["description"],
+          summary: article["description"],
+          content: article["content"],
           url: article["url"],
           image: article["urlToImage"]
         )
