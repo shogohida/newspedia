@@ -1,6 +1,16 @@
 <h1>Search results</h1>
 <%# if @articles.website.name == "COVID-19 Data" %>
-<%= column_chart Article.pluck(:date, :name) %>
+<%#= line_chart Article.pluck(:date, :name) %>
+
+<% if @website.name == "COVID-19 Data" %>
+  <%= line_chart @hash %>
+  <% @articles.each do |article| %>
+    <div class="card-product-infos">
+      <h2><%#= link_to article.name, website_article_path(@website, article) %></h2>
+      <p><%= article.name %></p>
+      <p><%= article.date %></p>
+    </div>
+  <% end %>
 <%#= line_chart Article.group_by_day(:date).count %>
 <!-- name.to_i??
  -->
@@ -16,6 +26,7 @@
 
 </ul> -->
   <%# end %>
+<% else %>
   <% @articles.each do |article| %>
     <div class="card-product">
       <% if article.image == nil %>
@@ -33,3 +44,4 @@
       <% end %>
     </div>
   <% end %>
+<% end %>

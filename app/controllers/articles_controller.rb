@@ -96,6 +96,7 @@ class ArticlesController < ApplicationController
       url4 = "https://api.covid19api.com/total/country/#{@website.keyword}"
       covid_serialized = open(url4).read
       @covid_articles = JSON.parse(covid_serialized)
+      @hash = Hash.new
       @covid_articles.each do |article|
         @article = Article.new(
           website: @website,
@@ -104,7 +105,11 @@ class ArticlesController < ApplicationController
           date: article["Date"]
         )
         @article.valid? ? @article.save : @article
+        @hash[article["Date"]] = article["Confirmed"]
+        # .strftime("%a")
+        # the order is strange
       end
+      # @hash.save
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
   end

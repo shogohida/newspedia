@@ -22,6 +22,7 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   host: db
   username: postgres
+  # username: shogo
   password: postgres
   pool: 5
   port: 5432
