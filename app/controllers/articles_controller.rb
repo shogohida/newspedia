@@ -119,10 +119,10 @@ class ArticlesController < ApplicationController
     @like = Like.new
     @favorite = Favorite.new
     # for AJAX
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: { article: @article } }
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: { article: @article } }
+    end
   end
 
   # def create
