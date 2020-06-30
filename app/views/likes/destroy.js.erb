@@ -1,1 +1,3 @@
-document.querySelector("#likes_button").innerHTML = "<%=j render 'likes/like', article: @article %>"
+// document.querySelector("#likes_button").innerHTML = "<%=j render 'likes/like', article: @article %>"
+
+$('#likes_buttons_<%= @article.id %>').html("<%= j(render partial: 'likes/like', locals: {article: @article}) %>");
