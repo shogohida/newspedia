@@ -3,7 +3,7 @@
 <%#= line_chart Article.pluck(:date, :name) %>
 
 <% if @website.name == "COVID-19 Data" %>
-  <%= line_chart @hash %>
+  <%= line_chart(@hash) %>
   <% @articles.each do |article| %>
     <div class="card-product-infos">
       <h2><%#= link_to article.name, website_article_path(@website, article) %></h2>
