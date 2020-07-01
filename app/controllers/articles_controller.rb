@@ -105,8 +105,9 @@ class ArticlesController < ApplicationController
           date: article["Date"]
         )
         @article.valid? ? @article.save : @article
-        @hash[article["Date"]] = article["Confirmed"]
+        @hash[article["Date"]] = article["Confirmed"].to_i
         # .strftime("%a")
+        # value needs to be an integer or float
         # the order is strange
       end
       # @hash.save

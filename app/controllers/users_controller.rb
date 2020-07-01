@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     @user.save
-    # Cloudinery
+    # Cloudinary
   end
 
   private
