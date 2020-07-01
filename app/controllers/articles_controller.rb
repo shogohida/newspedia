@@ -76,6 +76,11 @@ class ArticlesController < ApplicationController
       when "Australia" then @website.country = "au"
       when "UAE" then @website.country = "ae"
       when "Nigeria" then @website.country = "ng"
+      when "Canada" then @website.country = "ca"
+      when "Turkey" then @website.country = "tr"
+      when "Poland" then @website.country = "pl"
+      when "Malaysia" then @website.country = "my"
+      when "Philippines" then @website.country = "ph"
       end
       url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=#{ENV['news_api_api_key']}"
       news_api_serialized = open(url3).read
@@ -93,6 +98,8 @@ class ArticlesController < ApplicationController
       end
     elsif @website.name == "COVID-19 Data"
       # if @website.keyword.split.length <= 1....
+      # case @website.keyword
+      # when.....で場合分け?
       url4 = "https://api.covid19api.com/total/country/#{@website.keyword}"
       covid_serialized = open(url4).read
       @covid_articles = JSON.parse(covid_serialized)
@@ -107,10 +114,7 @@ class ArticlesController < ApplicationController
         @article.valid? ? @article.save : @article
         @hash[article["Date"]] = article["Confirmed"].to_i
         # .strftime("%a")
-        # value needs to be an integer or float
-        # the order is strange
       end
-      # @hash.save
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
   end
