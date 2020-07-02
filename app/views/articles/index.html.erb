@@ -3,14 +3,18 @@
 <%#= line_chart Article.pluck(:date, :name) %>
 
 <% if @website.name == "COVID-19 Data" %>
-  <%= line_chart @hash, xtitle: "Date", ytitle: "Number of confirmed COVID -19 cases in #{@website.keyword}" %>
-  <% @articles.each do |article| %>
-    <div class="card-product-infos">
+  <h3>COVID-19 Data in <%= @website.keyword.capitalize %></h3>
+  <%#= line_chart @hash_confirmed, xtitle: "Date", ytitle: "Number of confirmed COVID -19 cases in #{@website.keyword}" %>
+  <%= column_chart @hash_confirmed, xtitle: "Date", ytitle: "Number of confirmed cases" %>
+  <%= column_chart @hash_death, xtitle: "Date", ytitle: "Number of deaths" %>
+  <%= line_chart @hash_active, xtitle: "Date", ytitle: "Number of active patients" %>
+  <%# @articles.each do |article| %>
+<!--     <div class="card-product-infos">
       <h2><%#= link_to article.name, website_article_path(@website, article) %></h2>
       <p><%#= article.name %></p>
       <p><%#= article.date %></p>
-    </div>
-  <% end %>
+    </div> -->
+  <%# end %>
 <%#= line_chart Article.group_by_day(:date).count %>
 <!-- name.to_i??
  -->
