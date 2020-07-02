@@ -97,23 +97,55 @@ class ArticlesController < ApplicationController
         @article.valid? ? @article.save : @article
       end
     elsif @website.name == "COVID-19 Data"
-      # if @website.keyword.split.length <= 1....
-      # case @website.keyword
-      # when.....で場合分け?
+      word_index = 1
+      word_array = @website.keyword.split(" ")
+      if word_array.length <= 2
+        until word_index == word_array.length
+          word_array.insert(word_index, "-")
+          word_index += 2
+        end
+        # index[1] insert -
+        # case @website.keyword
+        # when.....で場合分け?
+        @website.keyword = word_array.join
+      end
       url4 = "https://api.covid19api.com/total/country/#{@website.keyword}"
       covid_serialized = open(url4).read
       @covid_articles = JSON.parse(covid_serialized)
-      @hash = Hash.new
+      date_number = 0
+      @hash_confirmed = Hash.new
+      @hash_death = Hash.new
+      @hash_active = Hash.new
+      # iteration for total number
+      # @covid_articles.each do |article|
+      #   @article = Article.new(
+      #     website: @website,
+      #     name: article["Confirmed"].to_i,
+      #     content: article["Deaths"].to_i,
+      #     date: article["Date"]
+      #   )
+      #   @article.valid? ? @article.save : @article
+      # @hash_confirmed[article["Date"]] = article["Confirmed"].to_i
+      # # .strftime("%a")
+      # @hash_death[article["Date"]] = article["Deaths"].to_i
+      until date_number + 1 == @covid_articles.size
+        if date_number.zero?
+          @hash_confirmed[@covid_articles[date_number]["Date"]] = @covid_articles[date_number]["Confirmed"].to_i
+          @hash_death[@covid_articles[date_number]["Date"]] = @covid_articles[date_number]["Deaths"].to_i
+          # elsif @covid_articles[date_number]["Deaths"].to_i < @covid_articles[date_number - 1]["Deaths"].to_i || @covid_articles[date_number]["Confirmed"].to_i < @covid_articles[date_number - 1]["Confirmed"].to_i
+          #   date_number += 1
+        elsif @covid_articles[date_number]["Deaths"].to_i > @covid_articles[date_number - 1]["Deaths"].to_i && @covid_articles[date_number]["Confirmed"].to_i > @covid_articles[date_number - 1]["Confirmed"].to_i && @covid_articles[date_number - 1]["Deaths"].to_i != 0
+          @hash_confirmed[@covid_articles[date_number]["Date"]] = @covid_articles[date_number]["Confirmed"].to_i - @covid_articles[date_number - 1]["Confirmed"].to_i
+          @hash_death[@covid_articles[date_number]["Date"]] = @covid_articles[date_number]["Deaths"].to_i - @covid_articles[date_number - 1]["Deaths"].to_i
+        end
+        # @covid_articles[date_number - 1]["Confirmed"].to_i != 0
+        # || @covid_articles[date_number]["Deaths"].to_i == 0 || @covid_articles[date_number]["Confirmed"].to_i == 0
+        date_number += 1
+      end
       @covid_articles.each do |article|
-        @article = Article.new(
-          website: @website,
-          name: article["Confirmed"].to_i,
-          content: article["Deaths"],
-          date: article["Date"]
-        )
-        @article.valid? ? @article.save : @article
-        @hash[article["Date"]] = article["Confirmed"].to_i
-        # .strftime("%a")
+        unless article["Date"] == "2020-06-24T00:00:00Z"
+          @hash_active[article["Date"]] = article["Active"].to_i
+        end
       end
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
