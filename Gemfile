@@ -35,10 +35,9 @@ gem 'pundit'
 gem "news-api"
 gem 'bullet', group: 'development'
 gem "chartkick"
-gem 'groupdate'
+# gem 'groupdate'
 # gem 'htmlbeautifier'
 gem 'cloudinary', '~> 1.12.0'
-# gem 'unsplash'
 gem 'jquery-rails'
 
 group :development, :test do

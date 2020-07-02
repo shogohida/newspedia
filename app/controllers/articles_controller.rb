@@ -81,6 +81,7 @@ class ArticlesController < ApplicationController
       when "Poland" then @website.country = "pl"
       when "Malaysia" then @website.country = "my"
       when "Philippines" then @website.country = "ph"
+      when "Ukraine" then @website.country = "ua"
       end
       url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.country}&apiKey=#{ENV['news_api_api_key']}"
       news_api_serialized = open(url3).read
@@ -99,7 +100,7 @@ class ArticlesController < ApplicationController
     elsif @website.name == "COVID-19 Data"
       word_index = 1
       word_array = @website.keyword.split(" ")
-      if word_array.length <= 2
+      if word_array.length >= 2
         until word_index == word_array.length
           word_array.insert(word_index, "-")
           word_index += 2
