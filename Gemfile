@@ -39,6 +39,7 @@ gem "chartkick"
 # gem 'htmlbeautifier'
 gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
+# gem 'savanna-outliers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
