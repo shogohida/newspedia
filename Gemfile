@@ -41,6 +41,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
 # gem 'savanna-outliers'
 
+# setting for Rspec
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
