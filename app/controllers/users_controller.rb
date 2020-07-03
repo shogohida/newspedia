@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     @user.save
-    # Cloudinary
   end
 
   private
@@ -20,5 +19,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :photo)
   end
 end
-
-# test memo
