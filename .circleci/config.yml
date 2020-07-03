@@ -3,13 +3,13 @@ version: 2.1 # Use 2.1 to enable using orbs and other features.
 # Declare the orbs that we'll use in our config.
 # read more about orbs: https://circleci.com/docs/2.0/using-orbs/
 orbs:
-  ruby: circleci/ruby@1.0 
+  ruby: circleci/ruby@1.0
   node: circleci/node@2
 
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:2.6.6-node 
+      - image: cimg/ruby:2.6.6-node
       - image: circleci/ruby:2.6.6
     steps:
       - checkout # pull down our git code.
@@ -17,18 +17,18 @@ jobs:
       # use the node orb to install our packages
       # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
       # learn more: https://circleci.com/docs/2.0/caching/
-      - node/install-packages: 
+      - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-          
+
   test:  # our next job, called "test"
     # we run "parallel job containers" to enable speeding up our tests;
     # this splits our tests across multiple containers.
-    parallelism: 3 
+    parallelism: 3
     # here we set TWO docker images.
     docker:
       - image: cimg/ruby:2.6.6-node # this is our primary docker image, where step commands run.
-      - image: circleci/postgres:9.5-alpine 
+      - image: circleci/postgres:10-alpine
         environment: # add POSTGRES environment variables.
           POSTGRES_USER: circleci-demo-ruby
           POSTGRES_DB: rails_blog_test
@@ -43,12 +43,12 @@ jobs:
       RAILS_ENV: test
     # A series of steps to run, some are similar to those in "build".
     steps:
-      - checkout 
-      - ruby/install-deps 
+      - checkout
+      - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-      # Here we make sure that the secondary container boots 
+      # Here we make sure that the secondary container boots
       # up before we run operations on the database.
       - run:
           name: Wait for DB
