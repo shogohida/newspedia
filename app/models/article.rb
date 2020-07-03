@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   has_many :likes
   has_many :favorite_users, through: :favorites, source: :user
   has_many :like_users, through: :likes, source: :user
-  validates :content, uniqueness: true
-  validates :name, uniqueness: true
+  validates :content, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: true
 end
