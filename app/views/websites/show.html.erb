@@ -1,71 +1,41 @@
 <h1><%= @website.name %></h1>
-<%#= simple_form_for @website do |f| %>
-  <%#= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
+<% if @website.name == "The New York Times" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :keyword %>
+    <%= f.submit "Search articles" %>
+  <% end %>
+  <h4>Introduction of the website</h4>
+  <p>The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other newspaper. The Times is ranked 18th in the world by circulation and 3rd in the U.S.</p>
+<% elsif @website.name == "Wikipedia" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :keyword %>
+    <%= f.submit "Search an article" %>
+  <% end %>
+  <h2>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</h2>
+<% elsif @website.name == "News API" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.select :keyword, options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
+    <%= f.submit "Search articles" %>
+  <% end %>
+  <h2>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</h2>
+          <!--   <ul>
+  <%#= @country_articles.each do |article| %>
+    <li><%#= article["title"] %></li>
+    <li><%#= article["description"] %></li>
   <%# end %>
-  <% if @website.name == "The New York Times" %>
-    <%= simple_form_for @website do |f| %>
-      <%= f.input :keyword %>
-      <%#= f.button :submit, "Search articles" %>
-      <%= f.submit "Search articles" %>
-    <% end %>
-    <h4>Introduction of the website</h4>
-    <p>The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other newspaper. The Times is ranked 18th in the world by circulation and 3rd in the U.S.</p>
-    <%#= simple_form_for do |f| %>
-      <%# end %>
-      <!-- <ol> -->
-      <%# @keyword_articles["response"]["docs"].each do |article| %>
-        <!-- <li><%#= article["lead_paragraph"] %></li> -->
-        <%# @array.each do |article| %>
-          <!-- <li><%#= article %></li> -->
-          <!-- articleへのリンクを作らないといいねとかブックマークできない -->
-          <%#= link_to "Save this article to your account", website_articles_path(@website), method: :post %>
-          <!-- link_to "save this article to your account", path (website :index nest article :create route). method: :post? -->
-          <%# end %>
-          <!-- </ol> -->
-          <%# elsif @website.name == "Financial Times" %>
-          <%#= simple_form_for @website do |f| %>
-            <%#= f.input :datetime %>
-            <%#= f.submit "Search articles" %>
-            <%# end %>
-            <!-- <h2>The Financial Times (FT) is an international daily newspaper printed in broadsheet and published digitally that focuses on business and economic current affairs. Based in London, England, the paper is owned by the Japanese holding company, Nikkei, with core editorial offices across Britain, the United States, and continental Europe.</h2> -->
-            <!--   <ol>
-  <%# @recent_articles["notifications"].each do |article| %>
-    <li><%#= article["apiUrl"][0..7] + article["apiUrl"][12..-1] %></li>
-  < link_to article.title, path above..... -->
-            <%# end %>
-            <!-- </ol> -->
-          <% elsif @website.name == "Wikipedia" %>
-            <%= simple_form_for @website do |f| %>
-              <%= f.input :keyword %>
-              <%= f.submit "Search an article" %>
-            <% end %>
-            <h2>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</h2>
-          <% elsif @website.name == "News API" %>
-            <%= simple_form_for @website do |f| %>
-              <%= f.select :keyword, options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
-              <!-- select as: : ["Japan, "US",...] -->
-              <%= f.submit "Search articles" %>
-            <% end %>
-            <h2>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</h2>
-            <!--   <ul>
-    <%#= @country_articles.each do |article| %>
-      <li><%#= article["title"] %></li>
-      <li><%#= article["description"] %></li>
-    <%# end %>
-  </ul> -->
-            <!--   <ul>
-    <%# @top_headlines.each do |headline| %>
-      <li><%#= headline.title %></li>
-      <li><%#= headline.description %></li>
-      <li><%#= headline.url %></li>
-    <%# end %>
-  </ul> -->
-          <% elsif @website.name == "COVID-19 Data" %>
-            <%= simple_form_for @website do |f| %>
-              <%= f.input :keyword, label: "country" %>
-              <!-- select as: : ["Japan, "US",...] -->
-              <%= f.submit "Search data" %>
-            <% end %>
-            <h2>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</h2>
-          <% end %>
-          <!-- to delete beautifulhtml? -->
+</ul> -->
+          <!--   <ul>
+  <%# @top_headlines.each do |headline| %>
+    <li><%#= headline.title %></li>
+    <li><%#= headline.description %></li>
+    <li><%#= headline.url %></li>
+  <%# end %>
+</ul> -->
+<% elsif @website.name == "COVID-19 Data" %>
+  <%= simple_form_for @website do |f| %>
+    <%= f.input :keyword, label: "country" %>
+    <!-- select as: : ["Japan, "US",...] -->
+    <%= f.submit "Search data" %>
+  <% end %>
+  <h2>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</h2>
+<% end %>

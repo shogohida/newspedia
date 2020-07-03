@@ -1,5 +1,5 @@
 <h1>Details of the article</h1>
-<h3><%#= @article.user.email %></h3>
+
 <h5><%= @article.content %></h5>
 <h5><%= link_to "Check this article", @article.url, target: :_blank %></h5>
 <h3>The number of likes: <%= @article.likes.count %></h3>
@@ -7,15 +7,13 @@
    <%= render partial: 'likes/like', locals: { article: @article} %>
 </div>
 
-<%# if current_user.already_liked?(@article) %>
-  <%#= button_to 'Unlike', article_like_path(@article), method: :delete, remote: true  %>
-<%# else %>
-  <%#= button_to 'Like', article_likes_path(@article), remote: true %>
-<%# end %>
+
 <h2>Users who liked this article</h2>
-<% @article.like_users.each do |user| %>
-  <li><%= user.name %></li>
-<% end %>
+<ul>
+  <% @article.like_users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
 <%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank' %>
 <%#= link_to "Back to search results", website_articles_path(@website) %>
 <%= link_to "Check the articles you liked", user_path(current_user) %>

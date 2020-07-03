@@ -1,21 +1,7 @@
-<!-- <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<select name="website" id="website">
-  <option value="nytimes">The New York Times</option>
-  <option value="ft">Financial Times</option>
-  <option value="news-api">News API</option>
-  <option value="wikipedia">Wikipedia</option>
-</select> -->
-<!-- 値を受け取ってlink_to各ページへ -->
-<!-- <h1>Test (Homepage) </h1> -->
-<%#= simple_form_for @website do |f| %>
-  <%#= f.input :name, as: :select, collection: ["The New York Times", "Financial Times", "News API", "Wikipedia"] %>
-  <%# end %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
     <div class="container">
       <h1><strong>Newspedia</strong></h1>
       <p>Collect articles from different news sources and create your favourite article list!</p>
-      <!--       <a class="btn btn-flat" href="#">Apply now</a> -->
     </div>
   </div>
   <h2>Select a website</h2>
@@ -24,8 +10,6 @@
       <% if website.name == "The New York Times" %>
         <div class="card-homepage mr-3">
           <%= image_tag "new-york-times.svg", alt: "alttext" %>
-          <!-- <img src="new-york-times.svg" alt="new york times"> -->
-          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -33,23 +17,9 @@
             </div>
           </div>
         </div>
-        <%# elsif website.name == "Financial Times" %>
-        <!--        <div class="card-homepage mr-3">
-          <%#= image_tag "new-york-times.svg", alt: "alttext" %>
-           <img src="new-york-times.svg" alt="new york times">
-                <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" >
-          <div class="card-homepage-infos">
-            <div>
-              <h2 class="salmon-text"><%#= website.name %></h2>
-              <%#= link_to "Search latest articles", website_path(website) %>
-            </div>
-          </div>
-        </div> -->
       <% elsif website.name == "News API" %>
         <div class="card-homepage mr-3">
           <%= image_tag "Screenshot from 2020-06-29 18-12-32.png", alt: "alttext" %>
-          <!-- <img src="new-york-times.svg" alt="new york times"> -->
-          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -60,8 +30,6 @@
       <% elsif website.name == "Wikipedia" %>
         <div class="card-homepage mr-3">
           <%= image_tag "wikipedia.svg", alt: "alttext" %>
-          <!-- <img src="new-york-times.svg" alt="new york times"> -->
-          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -72,8 +40,6 @@
       <% elsif website.name == "COVID-19 Data" %>
         <div class="card-homepage mr-3">
           <%= image_tag "Screenshot from 2020-06-29 18-18-36", alt: "alttext" %>
-          <!-- <img src="new-york-times.svg" alt="new york times"> -->
-          <!--       <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" > -->
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -84,26 +50,3 @@
       <% end %>
     </div>
   <% end %>
-  <!--   if website.name == "The New York Times"
-  card product? ロゴとの兼ね合い
-  <p>Search articles by keyword</p>
-if "News API"
-<p>Search articles by country</p>
-..... -->
-  <!--   <div class="flexbox justify-content-around mt-5">
-    <div class="card-homepage mr-3">
-      <%#= image_tag "new-york-times.svg", alt: "alttext" %>
-      <img src="new-york-times.svg" alt="new york times">
-            <img src="https://res.cloudinary.com/dwd42pppi/image/upload/v1589945174/meet_locals_krzfen.jpg" >
-      <div class="card-homepage-infos">
-        <div>
-          <h2 class="salmon-text">The New York Times</h2>
-          <h2>Search by keyword</h2>
-          <%#= link_to "Search by keyword", website_path(website) %>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <%#= website.name %>
-  <%#= link_to "Search articles", website_path(website) %>
-  <!-- search for keyword, search for date, search with more depth -->

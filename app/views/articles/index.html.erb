@@ -1,36 +1,13 @@
 <h1>Search results</h1>
-<%# if @articles.website.name == "COVID-19 Data" %>
-<%#= line_chart Article.pluck(:date, :name) %>
+
 
 <% if @website.name == "COVID-19 Data" %>
   <h3>COVID-19 Data in <%= @website.keyword.capitalize %></h3>
   <p> *If you see data which is significantly different from other observations, that's an outlier so please ignore it.</p>
-  <%#= line_chart @hash_confirmed, xtitle: "Date", ytitle: "Number of confirmed COVID -19 cases in #{@website.keyword}" %>
   <%= column_chart @hash_confirmed, xtitle: "Date", title: "Number of confirmed cases" %>
   <%= column_chart @hash_death, xtitle: "Date", title: "Number of deaths" %>
   <%= line_chart @hash_active, xtitle: "Date", title: "Number of active patients" %>
-  <%# @articles.each do |article| %>
-<!--     <div class="card-product-infos">
-      <h2><%#= link_to article.name, website_article_path(@website, article) %></h2>
-      <p><%#= article.name %></p>
-      <p><%#= article.date %></p>
-    </div> -->
-  <%# end %>
-<%#= line_chart Article.group_by_day(:date).count %>
-<!-- name.to_i??
- -->
-<!-- 消さないと全部出てきちゃう -->
-<%# @articles.each do |article| %>
-  <%#= article.date %>
-  <%#= article.name %>
-  <%# end %>
-  <%#= image_tag @photo %>
-  <%# else %>
-  <!--   <ul>
-    <h4>Title: <strong><%#= article.name %></strong></h4>
 
-</ul> -->
-  <%# end %>
 <% else %>
   <% @articles.each do |article| %>
     <div class="card-product">
@@ -41,7 +18,6 @@
         </div>
       <% else %>
         <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
-        <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> -->
         <div class="card-product-infos">
           <h2><%= link_to article.name, website_article_path(@website, article) %></h2>
           <p><%= article.summary %></p>
