@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
       @article = Article.new(
         website: @website,
         name: @page.title,
-        content: @page.content,
+        content: @page.summary,
         summary: @page.summary,
         url: @page.fullurl,
         image: @page.main_image_url
