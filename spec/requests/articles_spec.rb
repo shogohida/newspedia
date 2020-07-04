@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# test memo
-# Wikipedia, 100% exact
-# FT, time must be before Time.now
-# for all,
 RSpec.describe "Articles", type: :request do
   describe "#index" do
     # need to use before?? or let?

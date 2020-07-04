@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
       when "United States" then @website.keyword = "us"
       when "Mexico" then @website.keyword = "mx"
       when "Brazil" then @website.keyword = "br"
-      when "China" then @website.keyword = "cn"
+        # when "China" then @website.keyword = "cn"
       when "France" then @website.keyword = "fr"
       when "Germany" then @website.keyword = "de"
       when "India" then @website.keyword = "in"
