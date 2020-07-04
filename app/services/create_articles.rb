@@ -3,14 +3,15 @@ require 'open-uri'
 require 'wikipedia'
 require 'news-api'
 
-class ArticlesController < ApplicationController
-  def index
-    @articles = Article.includes(:likes).where(likes: { id: nil })
-    @articles.destroy_all
-    @website = Website.find(params[:website_id])
-    # @articles = CreateArticles.new
-    # @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
+class CreateArticles
 
+  def initialize
+    @website = Website.find(params[:website_id])
+  end
+
+  def create
+    # @articles = Article.includes(:likes).where(likes: { id: nil })
+    # @articles.destroy_all
     if @website.name == "The New York Times"
       url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=#{ENV['ny_times_api_key']}"
       ny_serialized = open(url1).read
@@ -98,7 +99,7 @@ class ArticlesController < ApplicationController
       # @array_death = []
       # @array_active = []
       until article_number1 + 1 == @covid_articles.size
-        if article_number1.zero?
+        if date_number1.zero?
           @hash_confirmed[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Confirmed"].to_i
           @hash_death[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Deaths"].to_i
           # @array_confirmed << @covid_articles[date_number]["Confirmed"].to_i
@@ -131,22 +132,5 @@ class ArticlesController < ApplicationController
       end
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
-  end
-
-  def show
-    @article = Article.find(params[:id])
-    @like = Like.new
-    @favorite = Favorite.new
-    # for AJAX
-    respond_to do |format|
-      format.html
-      format.json { render json: { article: @article } }
-    end
-  end
-
-  private
-
-  def article_params
-    params.require(:article).permit(:website_id, :name, :date, :summary, :url, :content, :memo)
   end
 end

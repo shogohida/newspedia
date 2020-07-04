@@ -1,15 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.pixabay.com/photo/2015/11/07/12/02/business-man-1031755_960_720.jpg);">
     <div class="container">
       <h1><strong>Newspedia</strong></h1>
       <p>Collect articles from different news sources and create your favourite article list!</p>
     </div>
   </div>
-  <h2>Select a website</h2>
+  <div class="homepage-title d-flex justify-content-center mt-4">
+    <h1><strong>Select a website</strong></h1>
+  </div>
+
+<div class="container">
   <% @websites.each do |website| %>
-    <div class="flexbox justify-content-around mt-5">
+    <div class="row justify-content-around mt-2">
       <% if website.name == "The New York Times" %>
         <div class="card-homepage mr-3">
-          <%= image_tag "new-york-times.svg", alt: "alttext" %>
+          <%= image_tag "https://www.linuxfoundation.jp/wp-content/uploads/2017/08/the-new-york-times-logo-vert.png", alt: "The New York Times" %>
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -19,7 +23,7 @@
         </div>
       <% elsif website.name == "News API" %>
         <div class="card-homepage mr-3">
-          <%= image_tag "Screenshot from 2020-06-29 18-12-32.png", alt: "alttext" %>
+          <%= image_tag "Screenshot from 2020-06-29 18-12-32.png", alt: "News API" %>
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -27,19 +31,27 @@
             </div>
           </div>
         </div>
-      <% elsif website.name == "Wikipedia" %>
+      <% end %>
+    </div>
+  <% end %>
+
+    <!-- <div class="flexbox justify-content-around mt-5"> -->
+
+  <% @websites.each do |website| %>
+    <div class="row justify-content-around mt-2">
+      <% if website.name == "Wikipedia" %>
         <div class="card-homepage mr-3">
-          <%= image_tag "wikipedia.svg", alt: "alttext" %>
+          <%= image_tag "wikipedia.svg", alt: "Wikipedia" %>
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
-              <%= link_to "Search page by name", website_path(website) %>
+              <%= link_to "Search a page by name", website_path(website) %>
             </div>
           </div>
         </div>
       <% elsif website.name == "COVID-19 Data" %>
         <div class="card-homepage mr-3">
-          <%= image_tag "Screenshot from 2020-06-29 18-18-36", alt: "alttext" %>
+          <%= image_tag "Screenshot from 2020-06-29 18-18-36", alt: "COVID-19 Data" %>
           <div class="card-homepage-infos">
             <div>
               <h2 class="salmon-text"><%= website.name %></h2>
@@ -50,3 +62,4 @@
       <% end %>
     </div>
   <% end %>
+</div>
