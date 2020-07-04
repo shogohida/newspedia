@@ -1,5 +1,10 @@
-<h1><%= @website.name %></h1>
+
+
 <% if @website.name == "The New York Times" %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <h1><%= @website.name %></h1>
+  </div>
+
   <%= simple_form_for @website do |f| %>
     <%= f.input :keyword %>
     <%= f.submit "Search articles" %>
@@ -11,13 +16,15 @@
     <%= f.input :keyword %>
     <%= f.submit "Search an article" %>
   <% end %>
-  <h2>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</h2>
+  <h4>Introduction of the website</h4>
+  <p>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</p>
 <% elsif @website.name == "News API" %>
   <%= simple_form_for @website do |f| %>
     <%= f.select :keyword, options_for_select(["Japan", "United States", "China", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
     <%= f.submit "Search articles" %>
   <% end %>
-  <h2>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</h2>
+  <h4>Introduction of the website</h4>
+  <p>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</p>
           <!--   <ul>
   <%#= @country_articles.each do |article| %>
     <li><%#= article["title"] %></li>
@@ -37,5 +44,6 @@
     <!-- select as: : ["Japan, "US",...] -->
     <%= f.submit "Search data" %>
   <% end %>
-  <h2>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</h2>
+  <h4>Introduction of the website</h4>
+  <p>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</p>
 <% end %>
