@@ -1,5 +1,5 @@
 <% if current_user.already_liked?(@article) %>
-  <%= button_to 'Unlike', article_like_path(@article), method: :delete, remote: true  %>
+  <%= button_to 'Unlike', article_like_path(@article), class: "btn-primary", method: :delete, remote: true  %>
 <% else %>
-  <%= button_to 'Like', article_likes_path(@article), remote: true %>
+  <%= button_to 'Like', article_likes_path(@article), class: "btn-primary", remote: true %>
 <% end %>

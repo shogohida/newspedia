@@ -1,25 +1,27 @@
 <h1>Details of the article</h1>
 
 <h5><%= @article.content %></h5>
-<h5><%= link_to "Check this article", @article.url, target: :_blank %></h5>
-<h3>The number of likes: <%= @article.likes.count %></h3>
+
+<!-- check this article on the external websiteに変える？ -->
+<h5><%= link_to "Check this article on on the external website", @article.url, class: 'btn btn-primary', target: :_blank %></h5>
+
 <div id="likes_button">
    <%= render partial: 'likes/like', locals: { article: @article} %>
 </div>
 
-
-<h2>Users who liked this article</h2>
+<p>The number of likes: <%= @article.likes.count %></p>
+<p>Users who liked this article</p>
 <ul>
   <% @article.like_users.each do |user| %>
     <li><%= user.name %></li>
   <% end %>
 </ul>
-<%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank' %>
+<%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank', class: 'btn btn-primary' %>
 <%#= link_to "Back to search results", website_articles_path(@website) %>
-<%= link_to "Check the articles you liked", user_path(current_user) %>
+<%= link_to "Check the articles you liked", user_path(current_user), class: 'btn btn-primary' %>
 <%= link_to "https://twitter.com/share?url=#{@article.url}", title: 'Twitter', target: '_blank' do %>
   <i class="fa fa-twitter"></i><span>Twitter</span></a>
 <% end %>
-<%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank' %>
-<%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank' %>
-<%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", target: '_blank' %>
+<%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank', class: 'btn btn-primary'%>
+<%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank', class: 'btn btn-primary' %>
+<%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", class: 'btn btn-primary', target: '_blank' %>
