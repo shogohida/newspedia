@@ -1,4 +1,4 @@
-version: 2.1
+# version: 2.1
 # この設定だとちゃんとデプロイされないとエラー出る可能性ある気がする
 # asset was not declared to be precompiled in production.
 # jobs:
@@ -107,16 +107,17 @@ jobs:
       - image: cimg/ruby:2.6.6-node # this is our primary docker image, where step commands run.
       - image: circleci/postgres:10-alpine
         environment: # add POSTGRES environment variables.
-          POSTGRES_USER: circleci-demo-ruby
-          POSTGRES_DB: rails_blog_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: postgres
+          POSTGRES_DB: db
+          POSTGRES_PASSWORD: postgres
+          # original password was ""
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      PGUSER: circleci-demo-ruby
-      PGPASSWORD: ""
+      PGUSER: postgres
+      PGPASSWORD: postgres
       RAILS_ENV: test
     # A series of steps to run, some are similar to those in "build".
     steps:
