@@ -67,14 +67,25 @@ class ArticlesController < ApplicationController
       news_api_serialized = open(url3).read
       @country_articles = JSON.parse(news_api_serialized)["articles"]
       @country_articles.each do |article|
-        @article = Article.new(
-          website: @website,
-          name: article["title"],
-          summary: article["description"],
-          content: article["content"],
-          url: article["url"],
-          image: article["urlToImage"]
-        )
+        if @website.keyword == "jp" || @website.keyword == "ru" || @website.keyword == "kr" || @website.keyword == "ae" || @website.keyword == "ua"
+          @article = Article.new(
+            website: @website,
+            name: article["title"],
+            summary: article["description"],
+            content: article["description"],
+            url: article["url"],
+            image: article["urlToImage"]
+          )
+        else
+          @article = Article.new(
+            website: @website,
+            name: article["title"],
+            summary: article["description"],
+            content: article["content"],
+            url: article["url"],
+            image: article["urlToImage"]
+          )
+        end
         @article.valid? ? @article.save : @article
       end
     elsif @website.name == "COVID-19 Data"

@@ -1,5 +1,5 @@
 <h1>Search results</h1>
-
+<%= link_to "Search other articles on #{@article.website.name}", website_path(@website) %>
 
 <% if @website.name == "COVID-19 Data" %>
   <h3>COVID-19 Data in <%= @website.keyword.capitalize %></h3>
