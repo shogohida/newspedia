@@ -1,8 +1,11 @@
 <h1><%= @website.name %> (later with background image...)</h1>
+
+<!-- @website.imageをマイグレーションで作って表示できるようにすれば？ バックグラウンドにする必要もないだろう　ロゴ見ればわかるんだから-->
+
 <% if @website.name == "The New York Times" %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+<!--   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
     <h1><%= @website.name %></h1>
-  </div>
+  </div> -->
   <%= simple_form_for @website do |f| %>
     <%= f.input :keyword %>
     <%= f.submit "Search articles" %>
