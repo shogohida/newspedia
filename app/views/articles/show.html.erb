@@ -25,3 +25,5 @@
 <%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank', class: 'btn btn-primary'%>
 <%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank', class: 'btn btn-primary' %>
 <%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", class: 'btn btn-primary', target: '_blank' %>
+
+<%= render "shared/footer" %>
