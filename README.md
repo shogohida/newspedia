@@ -18,4 +18,7 @@ You can also get COVID-19 information by country
 -APIs (The New York Times, News API and COVID-19 API) 
 
 # Future features
-1 To gather live financial information and to show it with a graph
+1 Gather live financial information and to show it with a graph  
+2 Deploy to AWS EC2  
+3 Send users weekly notifications about which articles they saved for a week  
+4 Add OAuth method so that users can sign in with SNS
