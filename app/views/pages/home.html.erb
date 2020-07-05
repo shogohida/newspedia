@@ -12,7 +12,7 @@
     <% @websites.each do |website| %>
       <!-- <div class="d-flex justify-content-center mt-2"> -->
         <% if website.name == "The New York Times" %>
-          <div class="card-homepage m-3">
+          <div class="card-homepage m-3 rounded">
             <%= image_tag "https://www.linuxfoundation.jp/wp-content/uploads/2017/08/the-new-york-times-logo-vert.png", alt: "The New York Times" %>
             <div class="card-homepage-infos">
               <div>
@@ -22,7 +22,7 @@
             </div>
           </div>
         <% elsif website.name == "News API" %>
-          <div class="card-homepage m-3">
+          <div class="card-homepage m-3 rounded">
             <%= image_tag "Screenshot from 2020-06-29 18-12-32.png", alt: "News API" %>
             <div class="card-homepage-infos">
               <div>
@@ -40,7 +40,7 @@
     <% @websites.each do |website| %>
       <!-- <div class="d-flex justify-content-center mt-2"> -->
         <% if website.name == "Wikipedia" %>
-          <div class="card-homepage m-3">
+          <div class="card-homepage rounded-lg m-3">
             <%= image_tag "wikipedia.svg", alt: "Wikipedia" %>
             <div class="card-homepage-infos">
               <div>
@@ -50,7 +50,7 @@
             </div>
           </div>
         <% elsif website.name == "COVID-19 Data" %>
-          <div class="card-homepage m-3">
+          <div class="card-homepage m-3 rounded-lg">
             <%= image_tag "Screenshot from 2020-06-29 18-18-36", alt: "COVID-19 Data" %>
             <div class="card-homepage-infos">
               <div>

@@ -1,52 +1,63 @@
-<h1><%= @website.name %> (later with background image...)</h1>
+<h1><%#= @website.name %></h1>
 
+<div class="d-flex justify-content-center">
+  <%= image_tag @website.image, alt: "alttext" %>
+</div>
 <!-- @website.imageをマイグレーションで作って表示できるようにすれば？ バックグラウンドにする必要もないだろう　ロゴ見ればわかるんだから-->
 
-<% if @website.name == "The New York Times" %>
-<!--   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <h1><%= @website.name %></h1>
-  </div> -->
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword %>
-    <%= f.submit "Search articles" %>
-  <% end %>
-  <h4>Introduction of the website</h4>
-  <p>The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other newspaper. The Times is ranked 18th in the world by circulation and 3rd in the U.S.</p>
-<% elsif @website.name == "Wikipedia" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword %>
-    <%= f.submit "Search an article" %>
-  <% end %>
-  <h4>Introduction of the website</h4>
-  <p>Wikipedia is a multilingual online encyclopedia created and maintained as an open collaboration project by a community of volunteer editors using a wiki-based editing system. It is the largest and most popular general reference work on the World Wide Web.</p>
-<% elsif @website.name == "News API" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
-    <%= f.submit "Search articles" %>
-  <% end %>
-  <h4>Introduction of the website</h4>
-  <p>Get breaking news headlines, and search for articles from news sources and blogs all over the web with our news API</p>
-  <!--   <ul>
-  <%#= @country_articles.each do |article| %>
-    <li><%#= article["title"] %></li>
-    <li><%#= article["description"] %></li>
-  <%# end %>
-</ul> -->
-  <!--   <ul>
-  <%# @top_headlines.each do |headline| %>
-    <li><%#= headline.title %></li>
-    <li><%#= headline.description %></li>
-    <li><%#= headline.url %></li>
-  <%# end %>
-</ul> -->
-<% elsif @website.name == "COVID-19 Data" %>
-  <%= simple_form_for @website do |f| %>
-    <%= f.input :keyword, label: "country" %>
-    <!-- select as: : ["Japan, "US",...] -->
-    <%= f.submit "Search data" %>
-  <% end %>
-  <h4>Introduction of the website</h4>
-  <p>Get data about COVID-19 of a particular country. Data is sourced from Johns Hopkins University Coronavirus Resource Center</p>
-<% end %>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <% if @website.name == "The New York Times" %>
+    <!--   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <h1><%#= @website.name %></h1>
+    </div> -->
+    <div>
+      <%= simple_form_for @website do |f| %>
+        <%= f.input :keyword %>
+        <%= f.submit "Search articles" %>
+      <% end %>
+    </div>
+    <div>
+      <h4>Introduction of  <%= @website.name %></h4>
+      <p><%= @website.description %></p>
+    </div>
+    <% elsif @website.name == "Wikipedia" %>
+    <%= simple_form_for @website do |f| %>
+      <%= f.input :keyword %>
+      <%= f.submit "Search an article" %>
+    <% end %>
+    <h4>Introduction of  <%= @website.name %></h4>
+    <p><%= @website.description %></p>
+    <% elsif @website.name == "News API" %>
+    <%= simple_form_for @website do |f| %>
+      <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
+      <%= f.submit "Search articles" %>
+    <% end %>
+    <h4>Introduction of  <%= @website.name %></h4>
+    <p><%= @website.description %></p>
+    <!--   <ul>
+    <%#= @country_articles.each do |article| %>
+      <li><%#= article["title"] %></li>
+      <li><%#= article["description"] %></li>
+    <%# end %>
+    </ul> -->
+    <!--   <ul>
+    <%# @top_headlines.each do |headline| %>
+      <li><%#= headline.title %></li>
+      <li><%#= headline.description %></li>
+      <li><%#= headline.url %></li>
+    <%# end %>
+    </ul> -->
+    <% elsif @website.name == "COVID-19 Data" %>
+    <%= simple_form_for @website do |f| %>
+      <%= f.input :keyword, label: "country" %>
+      <!-- select as: : ["Japan, "US",...] -->
+      <%= f.submit "Search data" %>
+    <% end %>
+    <h4>Introduction of <%= @website.name %></h4>
+    <p><%= @website.description %></p>
+    <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>
