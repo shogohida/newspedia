@@ -1,40 +1,40 @@
-<h1><%#= @website.name %></h1>
-
 <div class="d-flex justify-content-center">
   <%= image_tag @website.image, alt: "alttext" %>
 </div>
-<!-- @website.imageをマイグレーションで作って表示できるようにすれば？ バックグラウンドにする必要もないだろう　ロゴ見ればわかるんだから-->
-
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <% if @website.name == "The New York Times" %>
-    <!--   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <h1><%#= @website.name %></h1>
-    </div> -->
-    <div>
+  <% if @website.name == "The New York Times" %>
+    <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
         <%= f.input :keyword %>
         <%= f.submit "Search articles" %>
       <% end %>
     </div>
-    <div>
-      <h4>Introduction of  <%= @website.name %></h4>
+    <h4>Introduction of  <%= @website.name %></h4>
+    <div class="d-flex justify-content-center">
       <p><%= @website.description %></p>
     </div>
-    <% elsif @website.name == "Wikipedia" %>
-    <%= simple_form_for @website do |f| %>
-      <%= f.input :keyword %>
-      <%= f.submit "Search an article" %>
-    <% end %>
+  <% elsif @website.name == "Wikipedia" %>
+    <div class="d-flex justify-content-center my-3">
+      <%= simple_form_for @website do |f| %>
+        <%= f.input :keyword %>
+        <%= f.submit "Search an article" %>
+      <% end %>
+    </div>
     <h4>Introduction of  <%= @website.name %></h4>
-    <p><%= @website.description %></p>
-    <% elsif @website.name == "News API" %>
-    <%= simple_form_for @website do |f| %>
-      <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
-      <%= f.submit "Search articles" %>
-    <% end %>
+    <div class="d-flex justify-content-center">
+      <p><%= @website.description %></p>
+    </div>
+  <% elsif @website.name == "News API" %>
+    <div class="d-flex justify-content-center my-3">
+      <%= simple_form_for @website do |f| %>
+        <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
+        <%= f.submit "Search articles" %>
+      <% end %>
+    </div>
     <h4>Introduction of  <%= @website.name %></h4>
-    <p><%= @website.description %></p>
+    <div class="d-flex justify-content-center">
+      <p><%= @website.description %></p>
+    </div>
     <!--   <ul>
     <%#= @country_articles.each do |article| %>
       <li><%#= article["title"] %></li>
@@ -48,16 +48,17 @@
       <li><%#= headline.url %></li>
     <%# end %>
     </ul> -->
-    <% elsif @website.name == "COVID-19 Data" %>
-    <%= simple_form_for @website do |f| %>
-      <%= f.input :keyword, label: "country" %>
-      <!-- select as: : ["Japan, "US",...] -->
-      <%= f.submit "Search data" %>
-    <% end %>
+  <% elsif @website.name == "COVID-19 Data" %>
+    <div class="d-flex justify-content-center my-3">
+      <%= simple_form_for @website do |f| %>
+        <%= f.input :keyword, label: "Country" %>
+        <%= f.submit "Search data" %>
+      <% end %>
+    </div>
     <h4>Introduction of <%= @website.name %></h4>
-    <p><%= @website.description %></p>
-    <% end %>
-  </div>
+    <div class="d-flex justify-content-center">
+      <p><%= @website.description %></p>
+    </div>
+  <% end %>
 </div>
-
 <%= render "shared/footer" %>

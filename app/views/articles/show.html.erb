@@ -1,39 +1,32 @@
 <h1>Details of the article</h1>
-
-<div class="article-show d-flex justify-content-center">
+<div class="article-show d-flex justify-content-center my-3">
   <%= image_tag @article.image, alt: "alttext" %>
 </div>
-<!--   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), url(@article.image)">
-
-  </div>
- -->
 <h5><%= @article.content %></h5>
-
-<!-- check this article on the external websiteに変える？ -->
-<h5><%= link_to "Check this article on on the external website", @article.url, class: 'btn btn-primary', target: :_blank %></h5>
-
-<div id="likes_button">
-   <%= render partial: 'likes/like', locals: { article: @article} %>
+<div class="row justify-content-center">
+  <h5><%= link_to "Check this article on on the external website", @article.url, class: 'btn btn-outline-primary mx-2', target: :_blank %></h5>
+  <h5><%= render partial: 'likes/like', locals: { article: @article} %></h5>
+  <h5><%= link_to "Check the articles you liked", user_path(current_user), class: 'btn btn-outline-primary mx-2' %></h5>
+  <h5><%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank', class: 'btn btn-outline-primary mx-2' %></h5>
 </div>
-
-<p>The number of likes: <%= @article.likes.count %></p>
-<p>Users who liked this article</p>
-<ul>
-  <% @article.like_users.each do |user| %>
-    <li><%= user.name %></li>
-  <% end %>
-</ul>
-<%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank', class: 'btn btn-primary' %>
-<%#= link_to "Back to search results", website_articles_path(@website) %>
-<%= link_to "Check the articles you liked", user_path(current_user), class: 'btn btn-primary' %>
-<div class="mt-2">
+<div class="likes_content d-flex justify-content-center">
+  <p>The number of likes: <%= @article.likes.count %></p>
+</div>
+<div class="likes_content d-flex justify-content-center">
+  <p>Users who liked this article</p>
+  <ul>
+    <% @article.like_users.each do |user| %>
+      <li><%= user.name %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="d-flex justify-content-center mt-2">
   <h5><strong>Share this article on SNS</strong></h5>
 </div>
-<div class="share-sns">
-  <%= link_to 'Twitter', "https://twitter.com/share?url=#{@article.url}", target: '_blank', class: 'btn btn-primary' %>
-  <%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank', class: 'btn btn-primary'%>
-  <%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank', class: 'btn btn-primary' %>
-  <%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", class: 'btn btn-primary', target: '_blank' %>
+<div class="share-sns d-flex justify-content-center">
+  <%= link_to 'Twitter', "https://twitter.com/share?url=#{@article.url}", target: '_blank', class: 'btn btn-outline-primary mx-2' %>
+  <%= link_to 'Facebook', "http://www.facebook.com/share.php?u=#{@article.url}", target: '_blank', class: 'btn btn-outline-primary mx-2'%>
+  <%= link_to 'LINE', "http://line.me/R/msg/text/?#{@article.url}", target: '_blank', class: 'btn btn-outline-primary mx-2' %>
+  <%= link_to 'LinkedIn', "http://www.linkedin.com/shareArticle?mini=true&url=#{@article.url}", class: 'btn btn-outline-primary mx-2', target: '_blank' %>
 </div>
-
 <%= render "shared/footer" %>
