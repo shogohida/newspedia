@@ -31,15 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # added
 gem 'devise'
 gem 'wikipedia-client'
-gem 'pundit'
 gem "news-api"
 gem 'bullet', group: 'development'
 gem "chartkick"
-# gem 'groupdate'
-# gem 'htmlbeautifier'
 gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
-# gem 'savanna-outliers'
 
 # setting for Rspec
 group :development, :test do
