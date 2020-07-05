@@ -27,7 +27,7 @@
   <% elsif @website.name == "News API" %>
     <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
-        <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
+        <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Argentina", "Colombia", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
         <%= f.submit "Search articles" %>
       <% end %>
     </div>
