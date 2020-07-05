@@ -11,27 +11,27 @@
   <div class="row d-flex justify-content-center mt-2">
     <% @websites.each do |website| %>
       <!-- <div class="d-flex justify-content-center mt-2"> -->
-        <% if website.name == "The New York Times" %>
-          <div class="card-homepage m-3 rounded">
-            <%= image_tag "https://www.linuxfoundation.jp/wp-content/uploads/2017/08/the-new-york-times-logo-vert.png", alt: "The New York Times" %>
-            <div class="card-homepage-infos">
-              <div>
-                <h1><strong><%= website.name %></strong></h1>
-                <%= link_to "Search articles by keyword", website_path(website) %>
-              </div>
+      <% if website.name == "The New York Times" %>
+        <div class="card-homepage m-3 rounded">
+          <%= image_tag "ny_times.jpg", alt: "The New York Times" %>
+          <div class="card-homepage-infos">
+            <div>
+              <h2><strong><%= website.name %></strong></h2>
+              <%= link_to "Search articles by keyword", website_path(website) %>
             </div>
           </div>
-        <% elsif website.name == "News API" %>
-          <div class="card-homepage m-3 rounded">
-            <%= image_tag "Screenshot from 2020-06-29 18-12-32.png", alt: "News API" %>
-            <div class="card-homepage-infos">
-              <div>
-                <h2 class="salmon-text"><%= website.name %></h2>
-                <%= link_to "Search articles by country", website_path(website) %>
-              </div>
+        </div>
+      <% elsif website.name == "News API" %>
+        <div class="card-homepage m-3 rounded">
+          <%= image_tag "news_api.png", alt: "News API" %>
+          <div class="card-homepage-infos">
+            <div>
+              <h2><%= website.name %></h2>
+              <%= link_to "Search articles by country", website_path(website) %>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
       <!-- </div> -->
     <% end %>
   </div>
@@ -39,30 +39,29 @@
   <div class="row d-flex justify-content-center mt-3">
     <% @websites.each do |website| %>
       <!-- <div class="d-flex justify-content-center mt-2"> -->
-        <% if website.name == "Wikipedia" %>
-          <div class="card-homepage rounded-lg m-3">
-            <%= image_tag "wikipedia.svg", alt: "Wikipedia" %>
-            <div class="card-homepage-infos">
-              <div>
-                <h2 class="salmon-text"><%= website.name %></h2>
-                <%= link_to "Search a page by name", website_path(website) %>
-              </div>
+      <% if website.name == "Wikipedia" %>
+        <div class="card-homepage rounded-lg m-3">
+          <%= image_tag "wikipedia.jpg", alt: "Wikipedia" %>
+          <div class="card-homepage-infos">
+            <div>
+              <h2><%= website.name %></h2>
+              <%= link_to "Search a page by name", website_path(website) %>
             </div>
           </div>
-        <% elsif website.name == "COVID-19 Data" %>
-          <div class="card-homepage m-3 rounded-lg">
-            <%= image_tag "Screenshot from 2020-06-29 18-18-36", alt: "COVID-19 Data" %>
-            <div class="card-homepage-infos">
-              <div>
-                <h2 class="salmon-text"><%= website.name %></h2>
-                <%= link_to "Search COVID-19 data by country", website_path(website) %>
-              </div>
+        </div>
+      <% elsif website.name == "COVID-19 Data" %>
+        <div class="card-homepage m-3 rounded-lg">
+          <%= image_tag "covid.png", alt: "COVID-19 Data" %>
+          <div class="card-homepage-infos">
+            <div>
+              <h2><%= website.name %></h2>
+              <%= link_to "Search COVID-19 data by country", website_path(website) %>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
       <!-- </div> -->
     <% end %>
   </div>
 </div>
-
 <%= render "shared/footer" %>

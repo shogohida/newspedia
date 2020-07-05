@@ -1,19 +1,14 @@
-<h1>Your dashboard</h1>
-
-<%= link_to "Search other articles", root_path, class: "btn btn-primary" %>
-
-  <h3>The articles you liked</h3>
-  <% @user.liked_articles.each do |article| %>
-    <div class="card-product m-3">
-      <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
-
-      <div class="card-product-infos">
-        <!-- article.url -->
-        <!-- <h2><%#= link_to article.name, website_article_path(@website, article) %></h2> -->
-        <h2><%= link_to article.name, article_path(article), target: :_blank %></h2>
-        <p><%= article.summary %></p>
-      </div>
+<h1>The articles you liked</h1>
+<%= link_to "Search other articles", root_path, class: "btn btn-outline-primary" %>
+<% @user.liked_articles.each do |article| %>
+  <div class="card-product m-3">
+    <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
+    <div class="card-product-infos">
+      <!-- article.url -->
+      <!-- <h2><%#= link_to article.name, website_article_path(@website, article) %></h2> -->
+      <h2><%= link_to article.name, article_path(article), target: :_blank %></h2>
+      <p><%= article.summary %></p>
     </div>
-  <% end %>
-
+  </div>
+<% end %>
 <%= render "shared/footer" %>

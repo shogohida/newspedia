@@ -1,7 +1,6 @@
 <h1>Search results</h1>
-
 <% if @website.name == "COVID-19 Data" %>
-  <%= link_to "Search other COVID-19 data", website_path(@website), class: "btn btn-primary" %>
+  <%= link_to "Search other COVID-19 data", website_path(@website), class: "btn btn-outline-primary" %>
   <div class="COVID mt-3">
     <h3><strong>COVID-19 Data in <%= @website.keyword.capitalize %></strong></h3>
     <p> *If you see data which is significantly different from other observations, that's an outlier so please ignore it.</p>
@@ -9,9 +8,8 @@
   <%= column_chart @hash_confirmed, xtitle: "Date", title: "Number of confirmed cases" %>
   <%= column_chart @hash_death, xtitle: "Date", title: "Number of deaths" %>
   <%= line_chart @hash_active, xtitle: "Date", title: "Number of active patients" %>
-
 <% else %>
-  <%= link_to "Search other articles on #{@website.name}", website_path(@website), class: "btn btn-primary" %>
+  <%= link_to "Search other articles on #{@website.name}", website_path(@website), class: "btn btn-outline-primary" %>
   <% @articles.each do |article| %>
     <div class="card-product m-3">
       <% if article.image == nil %>
@@ -29,5 +27,4 @@
     </div>
   <% end %>
 <% end %>
-
 <%= render "shared/footer" %>
