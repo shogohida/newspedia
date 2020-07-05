@@ -12,9 +12,9 @@ class ArticlesController < ApplicationController
     # @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
 
     if @website.name == "The New York Times"
-      url1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=#{ENV['ny_times_api_key']}"
-      ny_serialized = open(url1).read
-      @keyword_articles = JSON.parse(ny_serialized)
+      nytimes_url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{@website.keyword}&api-key=#{ENV['ny_times_api_key']}"
+      nytimes_serialized = open(nytimes_url).read
+      @keyword_articles = JSON.parse(nytimes_serialized)
       @keyword_articles["response"]["docs"].each do |article|
         @article = Article.new(
           website: @website,
@@ -63,8 +63,8 @@ class ArticlesController < ApplicationController
       when "Philippines" then @website.keyword = "ph"
       when "Ukraine" then @website.keyword = "ua"
       end
-      url3 = "https://newsapi.org/v2/top-headlines?country=#{@website.keyword}&apiKey=#{ENV['news_api_api_key']}"
-      news_api_serialized = open(url3).read
+      news_api_url = "https://newsapi.org/v2/top-headlines?country=#{@website.keyword}&apiKey=#{ENV['news_api_api_key']}"
+      news_api_serialized = open(news_api_url).read
       @country_articles = JSON.parse(news_api_serialized)["articles"]
       @country_articles.each do |article|
         if @website.keyword == "jp" || @website.keyword == "ru" || @website.keyword == "kr" || @website.keyword == "ae" || @website.keyword == "ua"
@@ -98,8 +98,10 @@ class ArticlesController < ApplicationController
         end
         @website.keyword = word_array.join
       end
-      url4 = "https://api.covid19api.com/total/country/#{@website.keyword}"
-      covid_serialized = open(url4).read
+      covid_url = "https://api.covid19api.com/total/country/#{@website.keyword}"
+      # url4 = "https://api.covid19api.com/live/country/#{@website.keyword}/status/confirmed/date/2020-04-01T00:00:00Z"
+      # covid_url = "https://api.covid19api.com/country/#{@website.keyword}?from=2020-04-01T00:00:00Z&to=2020-07-01T00:00:00Z"
+      covid_serialized = open(covid_url).read
       @covid_articles = JSON.parse(covid_serialized)
       article_number1 = 0
       @hash_confirmed = {}

@@ -1,17 +1,19 @@
 <h1>Search results</h1>
 
 <% if @website.name == "COVID-19 Data" %>
-  <%= link_to "Search other COVID-19 data", website_path(@website) %>
-  <h3>COVID-19 Data in <%= @website.keyword.capitalize %></h3>
-  <p> *If you see data which is significantly different from other observations, that's an outlier so please ignore it.</p>
+  <%= link_to "Search other COVID-19 data", website_path(@website), class: "btn btn-primary" %>
+  <div class="COVID mt-3">
+    <h3><strong>COVID-19 Data in <%= @website.keyword.capitalize %></strong></h3>
+    <p> *If you see data which is significantly different from other observations, that's an outlier so please ignore it.</p>
+  </div>
   <%= column_chart @hash_confirmed, xtitle: "Date", title: "Number of confirmed cases" %>
   <%= column_chart @hash_death, xtitle: "Date", title: "Number of deaths" %>
   <%= line_chart @hash_active, xtitle: "Date", title: "Number of active patients" %>
 
 <% else %>
-  <%= link_to "Search other articles on #{@website.name}", website_path(@website) %>
+  <%= link_to "Search other articles on #{@website.name}", website_path(@website), class: "btn btn-primary" %>
   <% @articles.each do |article| %>
-    <div class="card-product">
+    <div class="card-product m-3">
       <% if article.image == nil %>
         <div class="card-product-infos">
           <h2><%= link_to article.name, article_path(article), target: :_blank %></h2>
