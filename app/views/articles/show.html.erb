@@ -1,7 +1,9 @@
 <h1>Details of the article</h1>
-<div class="article-show d-flex justify-content-center my-3">
-  <%= image_tag @article.image, alt: "alttext" %>
-</div>
+<% unless @article.image.nil? %>
+  <div class="article-show d-flex justify-content-center my-3">
+    <%= image_tag @article.image, alt: "alttext", class: "article-image" %>
+  </div>
+<% end %>
 <h5><%= @article.content %></h5>
 <div class="row justify-content-center">
   <h5><%= link_to "Check this article on on the external website", @article.url, class: 'btn btn-outline-primary mx-2', target: :_blank %></h5>
