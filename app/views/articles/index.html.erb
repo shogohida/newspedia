@@ -8,6 +8,25 @@
   <%= column_chart @hash_confirmed, xtitle: "Date", title: "Number of confirmed cases" %>
   <%= column_chart @hash_death, xtitle: "Date", title: "Number of deaths" %>
   <%= line_chart @hash_active, xtitle: "Date", title: "Number of active patients" %>
+<% elsif @website.name == "Wikipedia" %>
+  <%= link_to "Check this article", article_path(@article), class: "btn btn-outline-primary", target: :_blank %>
+  <%= link_to "Search other articles on #{@website.name}", website_path(@website), class: "btn btn-outline-primary" %>
+  <% @articles.each do |article| %>
+    <div class="card-product m-3">
+      <% if article.image == nil %>
+        <div class="card-product-infos">
+          <h2><%= link_to article.name, article_path(article), target: :_blank %></h2>
+          <p><%= article.summary %></p>
+        </div>
+      <% else %>
+        <%= image_tag article.image, alt: "article image", class: "card-product-image" %>
+        <div class="card-product-infos">
+          <h2><%= link_to article.name, article_path(article), target: :_blank %></h2>
+          <p><%= article.summary %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
   <%= link_to "Search other articles on #{@website.name}", website_path(@website), class: "btn btn-outline-primary" %>
   <% @articles.each do |article| %>
