@@ -1,7 +1,8 @@
-# Screen shot of Newspedia here
+# Newspedia
+https://user-images.githubusercontent.com/10365357/86527349-0dfbae00-bed9-11ea-8e27-1d46a6ef5db6.png  
 
-# URL (change to cheapname one later)
-https://newspedia.herokuapp.com/
+# URL
+https://www.newspedia.dev/  
 
 # Main features
 To gather articles from several websites like The New York Times, Wikipedia, BBC, The Guardian
