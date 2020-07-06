@@ -7,12 +7,16 @@
 <h5><%= @article.content %></h5>
 <div class="row justify-content-center">
   <h5><%= link_to "Check this article on on the external website", @article.url, class: 'btn btn-outline-primary mx-2', target: :_blank %></h5>
-  <h5><%= render partial: 'likes/like', locals: { article: @article} %></h5>
+  <div id="like_button_<%= @article %>">
+    <h5><%= render partial: 'likes/like', locals: { article: @article} %></h5>
+  </div>
   <h5><%= link_to "Check the articles you liked", user_path(current_user), class: 'btn btn-outline-primary mx-2' %></h5>
   <h5><%= link_to "Translate this article", "https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text=#{@article.content}", target: '_blank', class: 'btn btn-outline-primary mx-2' %></h5>
 </div>
 <div class="likes_content d-flex justify-content-center">
-  <p>The number of likes: <%= @article.likes.count %></p>
+  <div id="likes_number">
+    <p>The number of likes: <%= @article.likes.count %></p>
+  </div>
 </div>
 <div class="likes_content d-flex justify-content-center">
   <p>Users who liked this article</p>

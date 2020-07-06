@@ -1,8 +1,3 @@
+// document.querySelector("#like_button").addEventListener("click", () => {
 document.querySelector("#like_button").innerHTML = "<%=j render 'likes/like', article: @article %>";
-
-// $('#likes_buttons_<%= @article.id %>').html("<%= j(render partial: 'likes/like', locals: {article: @article}) %>");
-
-document.querySelector("#like_button").addEventListener("click", () => {
-  // document.querySelector(".loading-container").classList.add("loading")
-  document.querySelector("#like_button").remove()
-})
+//})
