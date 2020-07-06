@@ -1,5 +1,5 @@
 class WebsitesController < ApplicationController
-
+  skip_before_action :authenticate_user!
   def show
     @website = Website.find(params[:id])
   end

@@ -4,6 +4,7 @@ require 'wikipedia'
 require 'news-api'
 
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @articles = Article.includes(:likes).where(likes: { id: nil })
     @articles.destroy_all
