@@ -24,15 +24,15 @@ require("channels")
 
 // added
 
-//require("jquery")
-
 // External imports
 import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initLikeBtn } from '../components/like_button';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initLikeBtn()
 });
