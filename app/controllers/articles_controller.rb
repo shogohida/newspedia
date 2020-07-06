@@ -100,29 +100,21 @@ class ArticlesController < ApplicationController
         @website.keyword = word_array.join
       end
       covid_url = "https://api.covid19api.com/total/country/#{@website.keyword}"
-      # url4 = "https://api.covid19api.com/live/country/#{@website.keyword}/status/confirmed/date/2020-04-01T00:00:00Z"
-      # covid_url = "https://api.covid19api.com/country/#{@website.keyword}?from=2020-04-01T00:00:00Z&to=2020-07-01T00:00:00Z"
       covid_serialized = open(covid_url).read
       @covid_articles = JSON.parse(covid_serialized)
       article_number1 = 0
       @hash_confirmed = {}
       @hash_death = {}
       @hash_active = {}
-      # @array_confirmed = []
-      # @array_death = []
-      # @array_active = []
       until article_number1 + 1 == @covid_articles.size
         if article_number1.zero?
           @hash_confirmed[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Confirmed"].to_i
           @hash_death[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Deaths"].to_i
-          # @array_confirmed << @covid_articles[date_number]["Confirmed"].to_i
-          # @array_death << @covid_articles[date_number]["Deaths"].to_i
           # elsif @covid_articles[date_number]["Deaths"].to_i < @covid_articles[date_number - 1]["Deaths"].to_i || @covid_articles[date_number]["Confirmed"].to_i < @covid_articles[date_number - 1]["Confirmed"].to_i
-        elsif @covid_articles[article_number1]["Deaths"].to_i > @covid_articles[article_number1 - 1]["Deaths"].to_i && @covid_articles[article_number1]["Confirmed"].to_i > @covid_articles[article_number1 - 1]["Confirmed"].to_i && @covid_articles[article_number1 - 1]["Deaths"].to_i != 0 && @covid_articles[article_number1]["Deaths"].to_i - 10000 < @covid_articles[article_number1 - 1]["Deaths"].to_i && @covid_articles[article_number1]["Confirmed"].to_i - 10000 < @covid_articles[article_number1 - 1]["Confirmed"].to_i
+        elsif @covid_articles[article_number1]["Deaths"].to_i > @covid_articles[article_number1 - 1]["Deaths"].to_i && @covid_articles[article_number1]["Confirmed"].to_i > @covid_articles[article_number1 - 1]["Confirmed"].to_i && @covid_articles[article_number1 - 1]["Deaths"].to_i != 0 && @covid_articles[article_number1]["Deaths"].to_i - 10000 < @covid_articles[article_number1 - 1]["Deaths"].to_i
+          # && @covid_articles[article_number1]["Confirmed"].to_i - 20000 < @covid_articles[article_number1 - 1]["Confirmed"].to_i
           @hash_confirmed[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Confirmed"].to_i - @covid_articles[article_number1 - 1]["Confirmed"].to_i
           @hash_death[@covid_articles[article_number1]["Date"]] = @covid_articles[article_number1]["Deaths"].to_i - @covid_articles[article_number1 - 1]["Deaths"].to_i
-          # @array_confirmed << @covid_articles[date_number]["Confirmed"].to_i - @covid_articles[date_number - 1]["Confirmed"].to_i
-          # @array_death << @covid_articles[date_number]["Deaths"].to_i - @covid_articles[date_number - 1]["Deaths"].to_i
         end
         # @covid_articles[date_number - 1]["Confirmed"].to_i != 0
         # || @covid_articles[date_number]["Deaths"].to_i == 0 || @covid_articles[date_number]["Confirmed"].to_i == 0
@@ -136,12 +128,8 @@ class ArticlesController < ApplicationController
         if article["Date"] != "2020-06-24T00:00:00Z"
           # && @covid_articles[date_number2]["Active"].to_i + 10000 > @covid_articles[date_number2 - 1]["Active"].to_i
           @hash_active[article["Date"]] = article["Active"].to_i
-          # @array_active << article["Active"].to_i
-          # @excluded = Savanna::Outliers.remove_outliers(@array_active, :all)
-          # ハッシュじゃないとグラフ作れないよ
+
         end
-        # date_number2 += 1
-        # end
       end
     end
     @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
