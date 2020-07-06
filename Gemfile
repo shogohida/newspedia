@@ -35,7 +35,6 @@ gem "news-api"
 gem 'bullet', group: 'development'
 gem "chartkick"
 gem 'cloudinary', '~> 1.12.0'
-gem 'jquery-rails'
 
 # setting for Rspec
 group :development, :test do
