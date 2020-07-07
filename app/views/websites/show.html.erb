@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
         <%= f.input :keyword %>
-        <%= f.submit "Search articles" %>
+        <%= f.submit "Search articles", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
     <h4>Introduction of  <%= @website.name %></h4>
@@ -17,7 +17,7 @@
     <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
         <%= f.input :keyword %>
-        <%= f.submit "Search an article" %>
+        <%= f.submit "Search an article", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
     <h4>Introduction of  <%= @website.name %></h4>
@@ -28,7 +28,7 @@
     <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
         <%= f.select :keyword, options_for_select(["Japan", "United States", "Russia", "South Korea", "India", "United Kingdom", "France", "Germany", "Brazil", "Mexico", "Argentina", "Colombia", "Australia", "UAE", "Nigeria", "Canada", "Poland", "Philippines", "Malaysia", "Turkey", "Ukraine"]) %>
-        <%= f.submit "Search articles" %>
+        <%= f.submit "Search articles", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
     <h4>Introduction of  <%= @website.name %></h4>
@@ -52,7 +52,7 @@
     <div class="d-flex justify-content-center my-3">
       <%= simple_form_for @website do |f| %>
         <%= f.input :keyword, label: "Country" %>
-        <%= f.submit "Search data" %>
+        <%= f.submit "Search data", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
     <h4>Introduction of <%= @website.name %></h4>
