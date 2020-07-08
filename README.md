@@ -1,5 +1,5 @@
 # Newspedia
-![Screenshot from 2020-07-05 16-01-14](https://user-images.githubusercontent.com/10365357/86527415-79de1680-bed9-11ea-8bbb-d5dfcb773804.png)
+![Screenshot from 2020-07-08 12-03-16](https://user-images.githubusercontent.com/10365357/86870330-2d7e1b00-c113-11ea-950e-9c4bea08ca35.png)
 
 # URL
 https://www.newspedia.dev/  
