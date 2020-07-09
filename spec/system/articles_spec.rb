@@ -28,21 +28,21 @@ RSpec.describe Article, type: :system do
     article1 = FactoryBot.create(:article)
     article2 = FactoryBot.build(:article)
     article2.valid?
-    expect(article2.errors[:name]).to include("is the same as another article")
+    expect(article2.errors[:name]).to include("has already been taken")
   end
 
   it "is invalid if its content is the same as another article" do
     article1 = FactoryBot.create(:article)
     article2 = FactoryBot.build(:article)
     article2.valid?
-    expect(article2.errors[:content]).to include("is the same as another article")
+    expect(article2.errors[:content]).to include("has already been taken")
   end
 
   it "is invalid if its url is the same as another article" do
     article1 = FactoryBot.create(:article)
     article2 = FactoryBot.build(:article)
     article2.valid?
-    expect(article2.errors[:url]).to include("is the same as another article")
+    expect(article2.errors[:url]).to include("has already been taken")
   end
 
 end

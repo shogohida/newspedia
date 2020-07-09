@@ -11,4 +11,5 @@ class User < ApplicationRecord
     self.likes.exists?(article_id: article.id)
   end
   has_one_attached :photo
+  validates :name, presence: true
 end
