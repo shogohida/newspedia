@@ -6,37 +6,38 @@ RSpec.describe "UserAuthentications", type: :request do
   let(:invalid_user_params) { attributes_for(:user, name: "") }
 
   describe 'POST #create' do
-    context 'パラメータが妥当な場合' do
-      it 'リクエストが成功すること' do
+    context 'parameters are valid' do
+      it 'is valid' do
         post user_registration_path, params: { user: user_params }
-        expect(response.status).to eq 302
+        expect(response.status).to eq 200
+        # 302?
       end
 
-      it 'createが成功すること' do
+      it 'makes create action succeed' do
         expect do
           post user_registration_path, params: { user: user_params }
         end.to change(User, :count).by 1
       end
 
-      it 'リダイレクトされること' do
+      it 'redirects to homepage' do
         post user_registration_path, params: { user: user_params }
         expect(response).to redirect_to root_path
       end
     end
 
-    context 'パラメータが不正な場合' do
-      it 'リクエストが成功すること' do
+    context 'parameters are invalid' do
+      it 'is valid' do
         post user_registration_path, params: { user: invalid_user_params }
         expect(response.status).to eq 200
       end
 
-      it 'createが失敗すること' do
+      it 'makes create action fail' do
         expect do
           post user_registration_path, params: { user: invalid_user_params }
         end.to_not change(User, :count)
       end
 
-      it 'エラーが表示されること' do
+      it 'shows error messages' do
         post user_registration_path, params: { user: invalid_user_params }
         expect(response.body).to include 'prohibited this user from being saved'
       end
