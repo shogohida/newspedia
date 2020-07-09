@@ -16,7 +16,20 @@ You can also get COVID-19 information by country
 -Docker, Docker-compose  
 -Rspec  
 -Circle CI  
--APIs (The New York Times, News API and COVID-19 API) 
+-APIs (The New York Times, News API and COVID-19 API)  
+
+Links to API documentation  
+The New York Times  
+https://developer.nytimes.com/  
+
+News API  
+https://newsapi.org/docs  
+
+COVID-19 API  
+https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest  
+
+Wikipedia gem  
+https://github.com/kenpratt/wikipedia-client  
 
 # Future features
 1 Gather live financial information and to show it with a graph  
