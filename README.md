@@ -13,6 +13,7 @@ You can also get COVID-19 information by country
 -Rails 6.0.0  
 -JavaScript  
 -HTML/CSS  
+-Amazon Web Services  
 -Docker, Docker-compose  
 -Rspec  
 -Circle CI  
