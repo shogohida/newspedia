@@ -9,6 +9,7 @@ To gather articles from several websites like The New York Times, Wikipedia, BBC
 You can also get COVID-19 information by country
 
 # Technologies
+-Ubuntu 18.04  
 -Ruby 2.6.6  
 -Rails 6.0.0  
 -JavaScript  
