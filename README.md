@@ -5,8 +5,9 @@
 https://www.newspedia.dev/  
 
 # Main features
-To gather articles from several websites like The New York Times, Wikipedia, BBC, The Guardian
-You can also get COVID-19 information by country
+With this app, you can gather articles from several websites like The New York Times, Wikipedia, BBC, The Guardian.  
+It also enables you to search articles by country. For example, if you select any Spanish speaking country, you get articles in Spanish.  
+You can also get COVID-19 information by country and make graphs of confirmed cases, the number of deaths and active patients.
 
 # Technologies
 -Ubuntu 18.04  
@@ -15,9 +16,11 @@ You can also get COVID-19 information by country
 -JavaScript  
 -HTML/CSS  
 -PostgreSQL  
+-Git/GitHub  
 -AWS  
 -Docker, Docker-compose  
 -Rspec  
+-Rubocop  
 -Circle CI  
 -APIs (The New York Times, News API and COVID-19 API)  
 
@@ -36,6 +39,5 @@ https://github.com/kenpratt/wikipedia-client
 
 # Future features
 1 Gather live financial information and to show it with a graph  
-2 Deploy to AWS EC2  
-3 Send users weekly notifications about which articles they saved for a week  
-4 Add OAuth method so that users can sign in with SNS
+2 Send users weekly notifications about which articles they saved for a week  
+3 Add OAuth method so that users can sign in with SNS
