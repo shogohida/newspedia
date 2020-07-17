@@ -9,6 +9,9 @@ With this app, you can gather articles from several websites like The New York T
 It also enables you to search articles by country. For example, if you select any Spanish speaking country, you get articles in Spanish.  
 You can also get COVID-19 information by country and make graphs of confirmed cases, the number of deaths and active patients.
 
+# Background
+The reason why I created this app is that I used to analyse political and economic news during my professional career (at the Embassy of Japan in Guatemala and a think tank in Japan) and that I wanted to have an app which sorts those news easily.  
+
 # Technologies
 -Ubuntu 18.04  
 -Ruby 2.6.6  
