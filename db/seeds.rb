@@ -8,6 +8,13 @@
 #   password: '123456'
 # )
 
+# @test_user = User.create!(
+#   name: 'test user',
+#   email: 'test@gmail.com',
+#   password: '123456'
+# )
+
+
 puts "Deleting likes..."
 Like.destroy_all
 
