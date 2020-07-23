@@ -23,6 +23,7 @@ The reason why I created this app is that I used to analyse political and econom
 -AWS (EC2, RDS)  
 -Docker, Docker-compose  
 -Rspec  
+-Omniauth log in function with Twitter, GitHub, Facebook and LinkedIn  
 -Rubocop  
 -Circle CI  
 -APIs (The New York Times, News API and COVID-19 API)  
