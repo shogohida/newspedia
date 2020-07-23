@@ -36,6 +36,11 @@ gem 'bullet', group: 'development'
 gem "chartkick"
 gem 'cloudinary', '~> 1.12.0'
 gem 'letter_opener', group: :development
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 
 # setting for Rspec
 group :development, :test do

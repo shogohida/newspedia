@@ -22,6 +22,8 @@
           </div>
         <% end %>
 
+        <%= link_to "Log in through Twitter", user_omniauth_authorize_path(:twitter) %>
+
         <%= render "devise/shared/links" %>
       </div>
     </div>
