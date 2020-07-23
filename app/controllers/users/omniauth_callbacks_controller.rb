@@ -11,6 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from :github
   end
 
+  def linkedin
+    callback_from :linkedin
+  end
+
   private
 
   def callback_from(provider)
