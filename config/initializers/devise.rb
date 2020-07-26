@@ -273,7 +273,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], callback_url: 'https://newspedia.dev/auth/twitter/callback'
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'], callback_url: 'https://newspedia.dev/users/auth/twitter/callback'
   config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo"
   config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']
   config.omniauth :linkedin, ENV['LINKEDIN_ID'], ENV['LINKEDIN_SECRET']
