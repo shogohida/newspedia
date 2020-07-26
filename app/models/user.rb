@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,9 +17,7 @@ class User < ApplicationRecord
 
   # test user
   def self.guest
-    find_or_create_by!(name: 'test user', email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-    end
+    find_by(email: 'test@gmail.com')
   end
 
   # omniauth
