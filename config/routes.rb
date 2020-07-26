@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+  get '/privacy', to: 'pages#privacy'
 
   resources :users, only: [:show, :edit, :update]
 
