@@ -25,5 +25,8 @@ RSpec.describe "Articles", type: :request do
       it "directs to article/index page" do
       end
     end
+
+    # context "invalid parameters" do
+    #   it ""
   end
 end
