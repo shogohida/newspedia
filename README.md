@@ -20,7 +20,7 @@ The reason why I created this app is that I used to analyse political and econom
 -HTML/CSS  
 -PostgreSQL  
 -Git/GitHub  
--AWS (EC2, RDS)  
+-AWS (VPC, EC2, RDS)  
 -Docker, Docker-compose  
 -Rspec  
 -Omniauth log in function with Twitter, GitHub, Facebook and LinkedIn  
