@@ -22,6 +22,7 @@ The reason why I created this app is that I used to analyse political and econom
 -Git/GitHub  
 -AWS (VPC, EC2, RDS)  
 -Docker, Docker-compose  
+-Kubernetes  
 -Rspec  
 -Omniauth log in function with Twitter, GitHub, Facebook and LinkedIn  
 -Rubocop  
