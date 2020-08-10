@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubernetes-rails-example-deployment
+  name: newspedia-deployment
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: rails-app
+      app: newspedia
   template:
     metadata:
       labels:
-        app: rails-app
+        app: newspedia
     spec:
       containers:
       - name: rails-app
