@@ -44,5 +44,6 @@ https://github.com/kenpratt/wikipedia-client
 
 # Future features
 1 Gather live financial information and to show it with a graph  
-2 Send users weekly notifications about which articles they saved for a week  
-3 Add OAuth method so that users can sign in with SNS
+2 Send users weekly notifications about which articles they saved for a week by using AWS Lambda  
+3 Add OAuth method so that users can sign in with SNS  
+4 Incorporate Ansible  
