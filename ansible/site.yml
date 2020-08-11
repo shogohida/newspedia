@@ -1,0 +1,9 @@
+- hosts: newspedia
+  roles:
+    - init
+    - postgresql
+    - ruby
+    - nodejs
+    - redis
+  vars:
+    __working_user: vagrant
