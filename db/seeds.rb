@@ -2,11 +2,6 @@
 # User.destroy_all
 
 # puts 'Creating users...'
-# @shogo = User.create!(
-#   name: 'Shogo',
-#   email: 'shogo@gmail.com',
-#   password: '123456'
-# )
 
 # @test_user = User.create!(
 #   name: 'test user',
@@ -31,11 +26,6 @@ Website.create!(
   image: "ny_times.jpg",
   description: "The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 130 Pulitzer Prizes, more than any other newspaper. The Times is ranked 18th in the world by circulation and 3rd in the U.S."
 )
-
-# Website.create!(
-#   name: "Financial Times",
-#   url: "https://www.ft.com/"
-# )
 
 Website.create!(
   name: "News API",
