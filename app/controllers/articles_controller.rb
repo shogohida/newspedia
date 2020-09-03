@@ -9,7 +9,6 @@ class ArticlesController < ApplicationController
     @articles = Article.includes(:likes).where(likes: { id: nil })
     @articles.destroy_all
     @website = Website.find(params[:website_id])
-    # @articles = CreateArticles.new
     # @articles = Article.where(website_id: @website.id).includes(:likes).where(likes: { id: nil })
 
     if @website.name == "The New York Times"
