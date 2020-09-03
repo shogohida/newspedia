@@ -10,11 +10,11 @@
 # )
 
 
-puts "Deleting likes..."
-Like.destroy_all
+# puts "Deleting likes..."
+# Like.destroy_all
 
-puts "Deleting articles..."
-Article.destroy_all
+# puts "Deleting articles..."
+# Article.destroy_all
 
 puts "Deleting websites..."
 Website.destroy_all
