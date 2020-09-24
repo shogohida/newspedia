@@ -1,5 +1,5 @@
 <h1>Details of the article</h1>
-<% unless @article.image.nil? %>
+<% if @article.image? %>
   <div class="article-show d-flex justify-content-center my-3">
     <%= image_tag @article.image, alt: "alttext", class: "article-image" %>
   </div>
