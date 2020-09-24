@@ -42,6 +42,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
 gem 'simplecov', require: false, group: :test
+gem 'rails_best_practices'
 
 # setting for Rspec
 group :development, :test do
