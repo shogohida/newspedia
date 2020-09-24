@@ -1,5 +1,6 @@
-<% if current_user.already_liked?(@article) %>
-  <%= button_to 'Unlike', article_like_path(@article), class: "btn btn-outline-primary mx-2", method: :delete, remote: true  %>
+<% if current_user.already_liked?(article) %>
+  <%= button_to 'Unlike', article_like_path(article), class: "btn btn-outline-primary mx-2", method: :delete, remote: true  %>
 <% else %>
-  <%= button_to 'Like', article_likes_path(@article), class: "btn btn-outline-primary mx-2", method: :post, remote: true %>
+  <%= button_to 'Like', article_likes_path(article), class: "btn btn-outline-primary mx-2", method: :post, remote: true %>
 <% end %>
+# changed @article to article due to the warning from rails_best_practices
