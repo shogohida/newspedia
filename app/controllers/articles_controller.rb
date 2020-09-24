@@ -146,9 +146,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private
+  # private
 
-  def article_params
-    params.require(:article).permit(:website_id, :name, :date, :summary, :url, :content, :memo)
-  end
+  # def article_params
+  #   params.require(:article).permit(:website_id, :name, :date, :summary, :url, :content, :memo)
+  # end
 end
