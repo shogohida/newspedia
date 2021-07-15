@@ -2,7 +2,7 @@
 ![Screenshot from 2020-07-08 12-03-16](https://user-images.githubusercontent.com/10365357/86870330-2d7e1b00-c113-11ea-950e-9c4bea08ca35.png)
 
 # URL
-https://www.newspedia.dev/  
+https://newspedia.herokuapp.com/  
 
 # Main features
 With this app, you can gather articles from several websites like The New York Times, Wikipedia, BBC, The Guardian.  
